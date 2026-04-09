@@ -1,0 +1,9 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Perfil.uss?fileID=7433441132597879392&amp;guid=646be43a6299cd346bf8a893ec7dfda6&amp;type=3#Perfil"/>
+    <ui:VisualElement name="Root" class="root" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/fondo5.png?fileID=2800000&amp;guid=46aa7489306a0f049acd6b2f3940a2ab&amp;type=3#fondo5&quot;);">
+        <ui:Label text="Perfil" name="Titulo" class="titulo-perfil" style="position: absolute; top: 200px; left: 880px;"/>
+        <ui:Label text="Nombre de usuario: xX_ValeriaGigiYT_Xx" name="Usuario" class="texto-usuario" style="position: absolute; top: 368px; left: 688px;"/>
+        <ui:Button text="Volver al menú" name="BtnVolver" class="boton-volver" style="bottom: 71px; left: 76px; height: 78px; width: 235px; font-size: 25px;"/>
+        <ui:Button text="Cerrar Sesión" name="BtnCerrarSesion" class="boton-cerrar" style="position: absolute; top: 554px; left: 819px;"/>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,32 @@
+:root {
+}
+
+.root {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.panel {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo-ranking {
+    font-size: 48px;
+    color: white;
+    unity-text-align: middle-center;
+    margin-bottom: 20px;
+    -unity-background-image-tint-color: rgba(0, 0, 0, 0.99);
+    background-color: rgba(0, 0, 0, 0.91);
+}
+.boton-ranking {
+    width: 260px;
+    height: 80px;
+    font-size: 28px;
+    color: #444;
+    background-color: rgb(240,240,240);
+}

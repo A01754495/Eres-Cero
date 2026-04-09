@@ -1,0 +1,13 @@
+:root {
+}
+
+.score {
+    font-size: 50px;
+    color: white;
+    unity-text-align: middle-center;
+}
+.botonesGO {
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+}

@@ -1,0 +1,53 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Logros.uss?fileID=7433441132597879392&amp;guid=d48c361480ddb064d8be2a24aab732e5&amp;type=3#Logros"/>
+    <ui:VisualElement name="Root" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/fondo7.jpeg?fileID=2800000&amp;guid=1e08d292405e1a041bc6853631ee7215&amp;type=3#fondo7&quot;);">
+        <ui:Label text="Logros y estadísticas" class="titulo-logros" style="position: absolute; top: 81px; left: 682px;"/>
+        <ui:ScrollView class="scroll-logros" style="position: absolute; top: 341px; left: 335px; height: 607px; width: 1434px;">
+            <ui:VisualElement name="ContenedorLogros" class="contenedor-logros" style="flex-grow: 1; position: absolute; width: 379px; height: 151px; top: 74px; left: 46px;">
+                <ui:VisualElement name="Logro1" class="logro" style="flex-grow: 1; position: absolute; top: 46px; left: 792px;">
+                    <ui:Image name="ImgTrofeo1" class="trofeo" style="background-image: url(&quot;project://database/Assets/Sprites/trofeo.png?fileID=2800000&amp;guid=c8ccab212ceb52442aebe6d9f129335e&amp;type=3#trofeo&quot;); height: 246px; width: 242px;"/>
+                    <ui:VisualElement name="TextoLogro1" class="texto-logro" style="flex-grow: 1;">
+                        <ui:Label text="Logro" name="Titulologro" class="titulo-logro"/>
+                        <ui:Label text="Descripción" name="Descripcion" class="desc-logro"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Logro2" class="logro" style="flex-grow: 1; position: absolute; top: 312px; left: 798px;">
+                    <ui:Image name="ImgTrofeo1" class="trofeo" style="background-image: url(&quot;project://database/Assets/Sprites/trofeo.png?fileID=2800000&amp;guid=c8ccab212ceb52442aebe6d9f129335e&amp;type=3#trofeo&quot;); height: 246px; width: 242px;"/>
+                    <ui:VisualElement name="TextoLogro1" class="texto-logro" style="flex-grow: 1;">
+                        <ui:Label text="Logro&#10;" name="Titulologro" class="titulo-logro"/>
+                        <ui:Label text="Descripción" name="Descripcion" class="desc-logro"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Logro3" class="logro" style="flex-grow: 1; position: absolute; top: 297px; left: 134px;">
+                    <ui:Image name="ImgTrofeo1" class="trofeo" style="background-image: url(&quot;project://database/Assets/Sprites/trofeo.png?fileID=2800000&amp;guid=c8ccab212ceb52442aebe6d9f129335e&amp;type=3#trofeo&quot;); height: 246px; width: 242px;"/>
+                    <ui:VisualElement name="TextoLogro1" class="texto-logro" style="flex-grow: 1;">
+                        <ui:Label text="Logro" name="Titulologro" class="titulo-logro"/>
+                        <ui:Label text="Descripción" name="Descripcion" class="desc-logro"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Logro4" class="logro" style="flex-grow: 1; position: absolute; top: 24px; left: 132px;">
+                    <ui:Image name="ImgTrofeo1" class="trofeo" style="background-image: url(&quot;project://database/Assets/Sprites/trofeo.png?fileID=2800000&amp;guid=c8ccab212ceb52442aebe6d9f129335e&amp;type=3#trofeo&quot;); height: 246px; width: 242px;"/>
+                    <ui:VisualElement name="TextoLogro1" class="texto-logro" style="flex-grow: 1;">
+                        <ui:Label text="Logro" name="Titulologro" class="titulo-logro"/>
+                        <ui:Label text="Descripción" name="Descripcion" class="desc-logro"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Logro5" class="logro" style="flex-grow: 1; position: absolute; top: 582px; left: 144px;">
+                    <ui:Image name="ImgTrofeo1" class="trofeo" style="background-image: url(&quot;project://database/Assets/Sprites/trofeo.png?fileID=2800000&amp;guid=c8ccab212ceb52442aebe6d9f129335e&amp;type=3#trofeo&quot;); height: 246px; width: 242px;"/>
+                    <ui:VisualElement name="TextoLogro1" class="texto-logro" style="flex-grow: 1;">
+                        <ui:Label text="Logro" name="Titulologro" class="titulo-logro"/>
+                        <ui:Label text="Descripción" name="Descripcion" class="desc-logro"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Logro6" class="logro" style="flex-grow: 1; position: absolute; top: 600px; left: 812px;">
+                    <ui:Image name="ImgTrofeo1" class="trofeo" style="background-image: url(&quot;project://database/Assets/Sprites/trofeo.png?fileID=2800000&amp;guid=c8ccab212ceb52442aebe6d9f129335e&amp;type=3#trofeo&quot;); height: 246px; width: 242px;"/>
+                    <ui:VisualElement name="TextoLogro1" class="texto-logro" style="flex-grow: 1;">
+                        <ui:Label text="Logro" name="Titulologro" class="titulo-logro"/>
+                        <ui:Label text="Descripción" name="Descripcion" class="desc-logro"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:ScrollView>
+        <ui:Button text="Volver al menú" name="BtnVolver" enable-rich-text="true" class="boton-volver" style="height: 63px; width: 320px;"/>
+    </ui:VisualElement>
+</ui:UXML>

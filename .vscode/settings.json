@@ -67,6 +67,10 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
+<<<<<<< Updated upstream
     "dotnet.defaultSolution": "Eres-Cero.slnx",
     "dotnet.enableWorkspaceBasedDevelopment": false
+=======
+    "dotnet.defaultSolution": "Ciclo - Copy.slnx"
+>>>>>>> Stashed changes
 }

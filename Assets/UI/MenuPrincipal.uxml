@@ -1,0 +1,13 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MenuPrincipal.uss?fileID=7433441132597879392&amp;guid=4ac7273b795b545469d52f2f3d5a9597&amp;type=3#MenuPrincipal"/>
+    <ui:VisualElement name="Menu" class="menu" style="flex-grow: 1;">
+        <ui:Image name="Image" style="background-image: url(&quot;project://database/Assets/Sprites/Erescero.png?fileID=2800000&amp;guid=a376feec1cfa56a42b956bf7c96bc304&amp;type=3#Erescero&quot;); position: absolute; height: 169px; width: 707px; top: 258px; left: 635px;"/>
+        <ui:VisualElement name="Botones" class="botones" style="flex-grow: 1; position: absolute; top: 459px; left: 829px;">
+            <ui:Button text="Jugar" name="BtnJugar" class="boton" style="position: absolute; top: 6px; left: 12px;"/>
+            <ui:Button text="Rankings" name="BtnRankings" class="boton" style="position: absolute; top: 177px; left: 14px;"/>
+            <ui:Button text="Aspectos" name="BtnAspectos" class="boton" style="position: absolute; top: 356px; left: 19px;"/>
+        </ui:VisualElement>
+        <ui:Image name="IconoTrofeo" class="trofeo" style="background-image: url(&quot;project://database/Assets/Sprites/trofeo.png?fileID=2800000&amp;guid=c8ccab212ceb52442aebe6d9f129335e&amp;type=3#trofeo&quot;); height: 214px; width: 228px; top: -12px; left: 18px;"/>
+        <ui:Image name="IconoUsuario" class="usuario" style="background-image: url(&quot;project://database/Assets/Sprites/usuario.png?fileID=2800000&amp;guid=32dd8de270d471c4daa0f053e2ae06fd&amp;type=3#usuario&quot;); height: 164px; top: 8px; width: 163px;"/>
+    </ui:VisualElement>
+</ui:UXML>

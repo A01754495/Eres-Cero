@@ -8,5 +8,33 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/MenuPrincipal.unity
+    guid: 035b4a7644925644fab1f8edaaded1cc
+  - enabled: 1
+    path: Assets/Scenes/Gameplay.unity
+    guid: 5e47a712d586f044a854c7c54630f5a2
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: c86746398236734458da3c59c462b6c9
+  - enabled: 1
+    path: Assets/Scenes/Ranking.unity
+    guid: a7680bb01caed4e42b5a6a97a6b7c691
+  - enabled: 1
+    path: Assets/Scenes/Aspectos.unity
+    guid: d981ce965ee7d55488075dc65c042598
+  - enabled: 1
+    path: Assets/Scenes/Login.unity
+    guid: 9196c230d827df6499d5d72ef26a4b54
+  - enabled: 1
+    path: Assets/Scenes/Logros.unity
+    guid: c8c3b648acdab824899a299cd8d84a7c
+  - enabled: 1
+    path: Assets/Scenes/Dificultad.unity
+    guid: 4fdbd44c825613b409c2ea1134005719
+  - enabled: 1
+    path: Assets/Scenes/Perfil.unity
+    guid: ce26ab7b21484304182c06882950950c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_UseUCBPForAssetBundles: 0

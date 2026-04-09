@@ -1,0 +1,17 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Rankings.uss?fileID=7433441132597879392&amp;guid=a4b8e1ef90daa574cbc6b016410597b0&amp;type=3#Rankings"/>
+    <ui:VisualElement name="Root" class="root" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/fondo6.jpeg?fileID=2800000&amp;guid=2d1ebaafb2305ce45acc55f89becab9a&amp;type=3#fondo6&quot;);">
+        <ui:VisualElement name="PanelHistorico" class="panel" style="flex-grow: 1; display: none;">
+            <ui:Label text="Ranking histórico" name="TituloHistorico" class="titulo-ranking" style="-unity-font-style: bold; position: absolute; top: 77px; left: 725px;"/>
+            <ui:Button text="Volver al menú&#10;" name="BtnVolverHistorico" class="boton-ranking" style="position: absolute; top: 966px; left: 111px; background-color: rgb(0, 172, 37); color: rgb(255, 255, 255); height: 61px; width: 280px;"/>
+            <ui:Button text="Ver ranking semanal" name="BtnVerSemanal" class="boton-ranking" style="position: absolute; top: 935px; left: 1491px; width: 376px; height: 100px;"/>
+            <ui:Image style="background-image: url(&quot;project://database/Assets/Sprites/Ranking1.png?fileID=2800000&amp;guid=4bfe91fb4465af44aa68f5c0b0661960&amp;type=3#Ranking1&quot;); height: 737px; width: 982px;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="PanelSemanal" class="panel" style="flex-grow: 1;">
+            <ui:Label text="Ranking semanal" name="TituloSemanal" class="titulo-ranking" style="-unity-font-style: bold; position: absolute; top: 77px; left: 725px;"/>
+            <ui:Button text="Volver al menú&#10;" name="BtnVolverSemanal" class="boton-ranking" style="position: absolute; top: 966px; left: 111px; background-color: rgb(0, 172, 37); color: rgb(255, 255, 255); height: 61px; width: 280px;"/>
+            <ui:Button text="Ver ranking histórico" name="BtnVerHistorico" class="boton-ranking" style="position: absolute; top: 935px; left: 1491px; width: 376px; height: 100px;"/>
+            <ui:Image style="background-image: url(&quot;project://database/Assets/Sprites/Ranking1.png?fileID=2800000&amp;guid=4bfe91fb4465af44aa68f5c0b0661960&amp;type=3#Ranking1&quot;); height: 737px; width: 982px;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

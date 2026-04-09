@@ -1,0 +1,10 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/GameOver.uss?fileID=7433441132597879392&amp;guid=abedb827bad22ff469a4180c8cf6c600&amp;type=3#GameOver"/>
+    <ui:VisualElement name="Root" class="root" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/fondo2.jpeg?fileID=2800000&amp;guid=00219659fc593724ea4d64ba7c2d6966&amp;type=3#fondo2&quot;);">
+        <ui:Label text="SCORE: 0" name="Score" class="score" style="-unity-font-style: bold; position: absolute; top: 496px; left: 841px;"/>
+        <ui:VisualElement name="BotonesGO" class="botonesGO" style="flex-grow: 1;">
+            <ui:Button text="Jugar de Nuevo" name="BtnReintentar" style="position: absolute; top: 836px; left: 392px; width: 399px; height: 68px; font-size: 35px; color: rgb(255, 255, 255); background-color: rgb(24, 178, 18);"/>
+            <ui:Button text="Volver al Menú" name="BtnMenu" style="position: absolute; top: 831px; left: 1142px; width: 419px; height: 68px; font-size: 35px; color: rgb(255, 255, 255); background-color: rgb(223, 52, 52);"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

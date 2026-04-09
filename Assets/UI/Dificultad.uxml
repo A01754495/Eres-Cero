@@ -1,0 +1,12 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Dificultad.uss?fileID=7433441132597879392&amp;guid=b672525cc4b670c4bbdf8e8bc0cdafaa&amp;type=3#Dificultad"/>
+    <ui:VisualElement name="Root" class="root" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/fondo5.png?fileID=2800000&amp;guid=46aa7489306a0f049acd6b2f3940a2ab&amp;type=3#fondo5&quot;);">
+        <ui:Label text="Dificultad" class="titulo-dificultad" style="position: absolute; top: 102px; left: 820px;"/>
+        <ui:VisualElement name="BotonesDificultad" class="botones-dificultad" style="flex-grow: 1; width: 956px;">
+            <ui:Button text="" name="BtnDificil" class="boton-img" style="background-image: url(&quot;project://database/Assets/Sprites/Captura%20de%20pantalla%202026-03-31%20032058.png?fileID=2800000&amp;guid=99fa4a4d1f1dfb84d90ee8821a9fac93&amp;type=3#Captura de pantalla 2026-03-31 032058&quot;); height: 126px; width: 404px; position: absolute; top: 665px; left: 280px;"/>
+            <ui:Button text="" name="BtnIntermedio" class="boton-img" style="background-image: url(&quot;project://database/Assets/Sprites/Captura%20de%20pantalla%202026-03-31%20032052.png?fileID=2800000&amp;guid=f385fda673ccadb47abf7457168b3425&amp;type=3#Captura de pantalla 2026-03-31 032052&quot;); height: 157px; width: 450px; position: absolute; top: 468px; left: 258px;"/>
+        </ui:VisualElement>
+        <ui:Button text="Volver al inicio" name="BtnVolver" class="boton-volver" style="height: 78px; width: 244px; bottom: 52px; left: 83px; font-size: 25px;"/>
+        <ui:Button text="" name="BtnFacil" class="boton-img" style="background-image: url(&quot;project://database/Assets/Sprites/Captura%20de%20pantalla%202026-03-31%20032045.png?fileID=2800000&amp;guid=3327a1158bec98e48b7a3957109e2f87&amp;type=3#Captura de pantalla 2026-03-31 032045&quot;); height: 125px; width: 384px; position: absolute; top: 288px; left: 771px;"/>
+    </ui:VisualElement>
+</ui:UXML>
