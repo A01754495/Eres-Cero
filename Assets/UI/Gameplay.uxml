@@ -1,6 +1,8 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Gameplay.uss?fileID=7433441132597879392&amp;guid=5df94639dca58964cb52ef771d7698a4&amp;type=3#Gameplay"/>
-    <ui:VisualElement name="Root" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/fondo8.png?fileID=2800000&amp;guid=d37d276841888e54e89c6d7e183735a8&amp;type=3#fondo8&quot;);">
+    <ui:VisualElement name="Root" style="flex-grow: 1; background-color: rgba(102, 102, 102, 0);">
         <ui:Button text="Perder" name="BtnPerder" class="boton-perder" style="color: rgb(0, 0, 0);"/>
+        <ui:Label text="Label" name="LabelPuntaje" style="font-size: 60px; -unity-font-style: bold;"/>
+        <ui:Label text="Label" name="LabelValor" style="font-size: 60px; -unity-font-style: bold;"/>
     </ui:VisualElement>
 </ui:UXML>

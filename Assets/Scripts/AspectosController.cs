@@ -43,7 +43,7 @@ public class AspectosController : MonoBehaviour
     //  BOTÓN SELECCIONAR
     void SeleccionarSkin(ClickEvent evt)
     {
-        // ✔ cambia texto
+        // cambia texto
         btnSeleccionar.text = "✔ Seleccionado";
 
         //  borde verde a preview
