@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public float IncrementoVel  { get; private set; } = 0.15f;
     // Rango de los números que aparecen en las casillas de operación
     public int   RangoOperacion { get; private set; } = 5;
+    public int ValorBase { get; set; } = 0;
 
     void Awake()
     {
@@ -45,17 +46,17 @@ public class GameManager : MonoBehaviour
         switch (dificultad)
         {
             case "facil":
-                VelocidadBase  = 2.5f;
+                VelocidadBase  = 1.5f;
                 IncrementoVel  = 0.10f;
                 RangoOperacion = 5;
                 break;
             case "medio":
-                VelocidadBase  = 3.5f;
+                VelocidadBase  = 2.5f;
                 IncrementoVel  = 0.15f;
                 RangoOperacion = 10;
                 break;
             case "dificil":
-                VelocidadBase  = 5f;
+                VelocidadBase  = 3.5f;
                 IncrementoVel  = 0.25f;
                 RangoOperacion = 20;
                 break;

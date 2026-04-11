@@ -8,6 +8,7 @@ public class CasillaOperacion : MonoBehaviour
 {
     [HideInInspector] public string operador; // "+", "-", "*", "/"
     [HideInInspector] public int    numero;
+    [HideInInspector] public int    resultadoFinal;
 
     public TextMeshPro textoOperacion; // arrastra el TMP en el Inspector del prefab
 

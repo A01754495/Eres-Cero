@@ -16,13 +16,10 @@ public class LaneSpawner : MonoBehaviour
     public float spawnY   =  6.4f;
     public float destroyY = -6.4f;
 
-    [Header("Distancia vertical entre olas")]
-    public float distanciaEntreOlas = 8.6f;
-    public float distanciaPuerta    = 2.7f;
+    [Header("Distancia vertical entre la casilla y la puerta")]
+    public float distanciaPuerta = 2.7f;
 
     private float[] carriles;
-    private float   timerProximaOla; // timer en segundos hasta siguiente ola
-    private bool    primeraOla = true;
 
     private string[] opsFacil   = { "+", "-" };
     private string[] opsMedio   = { "+", "-", "*" };
@@ -31,11 +28,7 @@ public class LaneSpawner : MonoBehaviour
     void Start()
     {
         carriles = new float[] { carrilIzquierda, carrilCentro, carrilDerecha };
-        SpawnOla(); // primera ola inmediata
-        // Calcular cuánto tiempo tarda la primera ola en bajar hasta dejar espacio
-        float vel = GameManager.Instance != null ? GameManager.Instance.VelocidadActual() : 3f;
-        timerProximaOla = distanciaEntreOlas / vel;
-        primeraOla = false;
+        SpawnOla();
     }
 
     void Update()
@@ -44,29 +37,18 @@ public class LaneSpawner : MonoBehaviour
                         ? GameManager.Instance.VelocidadActual()
                         : 3f;
 
-        // Mover todos los hijos hacia abajo
         foreach (Transform hijo in transform)
             hijo.position += Vector3.down * velocidad * Time.deltaTime;
 
-        // Destruir objetos fuera de pantalla
         List<Transform> aEliminar = new List<Transform>();
         foreach (Transform hijo in transform)
+        {
             if (hijo.position.y < destroyY)
                 aEliminar.Add(hijo);
+        }
+
         foreach (var h in aEliminar)
             Destroy(h.gameObject);
-
-        // Countdown para siguiente ola
-        timerProximaOla -= Time.deltaTime;
-        if (timerProximaOla <= 0f)
-        {
-            SpawnOla();
-            // Recalcular timer con velocidad actual (va aumentando)
-            velocidad = GameManager.Instance != null
-                      ? GameManager.Instance.VelocidadActual()
-                      : 3f;
-            timerProximaOla = distanciaEntreOlas / velocidad;
-        }
     }
 
     void SpawnOla()
@@ -74,45 +56,104 @@ public class LaneSpawner : MonoBehaviour
         int rango    = GameManager.Instance != null ? GameManager.Instance.RangoOperacion : 5;
         string[] ops = ObtenerOperadores();
 
-        int    carrilSolucion = Random.Range(0, 3);
-        int    meta           = Random.Range(1, rango + 1);
+        //  La base real es el valor actual del jugador,
+        // no una meta futura generada antes de tiempo
+        int valorBase = GameManager.Instance != null ? GameManager.Instance.ValorJugador : 0;
+
+        if (GameManager.Instance != null)
+            GameManager.Instance.ValorBase = valorBase;
+
+        int meta;
+        int intentosMeta = 0;
+        do
+        {
+            meta = Random.Range(1, rango + 1);
+            intentosMeta++;
+        }
+        while (meta == valorBase && intentosMeta < 50);
+
+        if (meta == valorBase)
+            meta = valorBase + 1;
+
+        int diferencia     = meta - valorBase;
+        int carrilSolucion = Random.Range(0, 3);
 
         string[] opsCarril  = new string[3];
         int[]    numsCarril = new int[3];
+        int[]    resultados = new int[3];
 
         for (int i = 0; i < 3; i++)
         {
             if (i == carrilSolucion)
             {
-                opsCarril[i]  = "+";
-                numsCarril[i] = meta;
+                opsCarril[i]  = diferencia >= 0 ? "+" : "-";
+                numsCarril[i] = Mathf.Abs(diferencia);
+                resultados[i] = meta;
             }
             else
             {
-                opsCarril[i]  = ops[Random.Range(0, ops.Length)];
-                numsCarril[i] = Random.Range(1, rango + 1);
+                string opDist;
+                int numDist;
+                int resultadoDist;
+                int intentos = 0;
+
+                do
+                {
+                    opDist  = ops[Random.Range(0, ops.Length)];
+                    numDist = Random.Range(1, rango + 1);
+
+                    resultadoDist = opDist switch
+                    {
+                        "+" => valorBase + numDist,
+                        "-" => valorBase - numDist,
+                        "*" => valorBase * numDist,
+                        "/" => numDist != 0 ? valorBase / numDist : valorBase + 1,
+                        _   => valorBase + 1
+                    };
+
+                    intentos++;
+                }
+                while (resultadoDist == meta && intentos < 20);
+
+                opsCarril[i]  = opDist;
+                numsCarril[i] = numDist;
+                resultados[i] = resultadoDist;
             }
         }
 
-        Shuffle(ref opsCarril, ref numsCarril);
+        Shuffle(ref opsCarril, ref numsCarril, ref resultados);
 
-        // Las 3 casillas a la misma Y (spawnY)
         for (int i = 0; i < 3; i++)
         {
             GameObject go = Instantiate(prefabCasilla, transform);
             go.transform.position = new Vector3(carriles[i], spawnY, 0f);
-            go.GetComponent<CasillaOperacion>()?.Configurar(opsCarril[i], numsCarril[i]);
+
+            CasillaOperacion casilla = go.GetComponent<CasillaOperacion>();
+            if (casilla != null)
+            {
+                casilla.resultadoFinal = resultados[i];
+                casilla.Configurar(opsCarril[i], numsCarril[i]);
+            }
         }
 
-        // Puerta justo encima de las casillas
         GameObject puertaGO = Instantiate(prefabPuerta, transform);
         puertaGO.transform.position = new Vector3(carrilCentro, spawnY + distanciaPuerta, 0f);
-        puertaGO.GetComponent<PuertaController>()?.Configurar(meta);
+
+        PuertaController puerta = puertaGO.GetComponent<PuertaController>();
+        if (puerta != null)
+            puerta.Configurar(meta);
+    }
+
+    public void ForzarNuevaOla()
+    {
+        // genera una nueva ola solo cuando pasas la puerta correcta
+        SpawnOla();
     }
 
     string[] ObtenerOperadores()
     {
         if (GameManager.Instance == null) return opsFacil;
+
         return GameManager.Instance.Dificultad switch
         {
             "medio"   => opsMedio,
@@ -121,13 +162,23 @@ public class LaneSpawner : MonoBehaviour
         };
     }
 
-    void Shuffle(ref string[] ops, ref int[] nums)
+    void Shuffle(ref string[] ops, ref int[] nums, ref int[] res)
     {
         for (int i = ops.Length - 1; i > 0; i--)
         {
             int j = Random.Range(0, i + 1);
-            (ops[i], ops[j])   = (ops[j], ops[i]);
-            (nums[i], nums[j]) = (nums[j], nums[i]);
+
+            string tOp = ops[i];
+            ops[i] = ops[j];
+            ops[j] = tOp;
+
+            int tNum = nums[i];
+            nums[i] = nums[j];
+            nums[j] = tNum;
+
+            int tRes = res[i];
+            res[i] = res[j];
+            res[j] = tRes;
         }
     }
 }
