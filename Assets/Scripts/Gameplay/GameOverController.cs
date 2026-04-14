@@ -2,6 +2,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
+// GameOverController muestra el puntaje final leído desde GameManager.
+//
+// SETUP en Unity:
+//   El UIDocument de GameOver debe tener:
+//     - Un Label llamado "LabelPuntajeFinal"  → muestra "SCORE: 0"
+//     - Un Button llamado "BtnReintentar"
+//     - Un Button llamado "BtnMenu"
 
 public class GameOverController : MonoBehaviour
 {

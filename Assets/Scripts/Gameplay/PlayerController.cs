@@ -15,9 +15,9 @@ public class PlayerController : MonoBehaviour
     [Header("UI: texto que muestra el valor del jugador")]
     public TextMeshPro textoValor;
 
-    private int   carrilActual = 1;
+    private int carrilActual = 1;
     private float xObjetivo;
-    private bool  puedeMover = true;
+    private bool puedeMover = true;
 
     private InputAction moverIzquierda;
     private InputAction moverDerecha;
@@ -38,24 +38,24 @@ public class PlayerController : MonoBehaviour
         moverIzquierda.Enable();
         moverDerecha.Enable();
         moverIzquierda.performed += OnMoverIzquierda;
-        moverDerecha.performed   += OnMoverDerecha;
+        moverDerecha.performed += OnMoverDerecha;
     }
 
     void OnDisable()
     {
         moverIzquierda.performed -= OnMoverIzquierda;
-        moverDerecha.performed   -= OnMoverDerecha;
+        moverDerecha.performed -= OnMoverDerecha;
         moverIzquierda.Disable();
         moverDerecha.Disable();
     }
 
     void OnMoverIzquierda(InputAction.CallbackContext ctx) => CambiarCarril(-1);
-    void OnMoverDerecha(InputAction.CallbackContext ctx)   => CambiarCarril(1);
+    void OnMoverDerecha(InputAction.CallbackContext ctx) => CambiarCarril(1);
 
     void Start()
     {
         carrilActual = 1;
-        xObjetivo    = carrilCentro;
+        xObjetivo = carrilCentro;
         ActualizarTexto();
     }
 
@@ -68,7 +68,9 @@ public class PlayerController : MonoBehaviour
     void CambiarCarril(int direccion)
     {
         if (!puedeMover) return;
+
         carrilActual = Mathf.Clamp(carrilActual + direccion, 0, 2);
+
         xObjetivo = carrilActual == 0 ? carrilIzquierda
                   : carrilActual == 2 ? carrilDerecha
                   : carrilCentro;
@@ -76,8 +78,7 @@ public class PlayerController : MonoBehaviour
 
     void MoverHaciaCarril()
     {
-        float x = Mathf.MoveTowards(transform.position.x, xObjetivo,
-                                    velocidadMovimiento * Time.deltaTime);
+        float x = Mathf.MoveTowards(transform.position.x, xObjetivo, velocidadMovimiento * Time.deltaTime);
         transform.position = new Vector3(x, transform.position.y, transform.position.z);
     }
 
@@ -87,6 +88,7 @@ public class PlayerController : MonoBehaviour
         {
             CasillaOperacion casilla = other.GetComponent<CasillaOperacion>();
             if (casilla == null) return;
+
             GameManager.Instance.ValorJugador = casilla.resultadoFinal;
             ActualizarTexto();
             Destroy(other.gameObject);
@@ -99,13 +101,15 @@ public class PlayerController : MonoBehaviour
 
             if (GameManager.Instance.ValorJugador == puerta.numeroMeta)
             {
-                GameManager.Instance.Puntaje      += 100 + GameManager.Instance.PuertasVivas * 10;
+                GameManager.Instance.Puntaje += 100 + GameManager.Instance.PuertasVivas * 10;
                 GameManager.Instance.PuertasVivas += 1;
-                GameManager.Instance.ValorJugador  = puerta.numeroMeta; // primero actualizar valor
-                GameManager.Instance.ValorBase     = puerta.numeroMeta; // también ValorBase
+                GameManager.Instance.ValorJugador = puerta.numeroMeta;
+                GameManager.Instance.ValorBase = puerta.numeroMeta;
+
                 puerta.MostrarExito();
                 ActualizarTexto();
-                FindFirstObjectByType<LaneSpawner>()?.ForzarNuevaOla(); // luego forzar ola
+
+                FindFirstObjectByType<LaneSpawner>()?.ForzarNuevaOla();
             }
             else
             {
@@ -114,23 +118,6 @@ public class PlayerController : MonoBehaviour
                 Invoke(nameof(IrGameOver), 0.8f);
             }
         }
-    }
-
-    void AplicarOperacion(string op, int num)
-    {
-        // // Siempre opera sobre ValorBase (valor al inicio de la ola)
-        // // así tocar distractores no arruina la posibilidad de llegar al meta
-        // int val = GameManager.Instance.ValorBase;
-        // Debug.Log($"AplicarOperacion — ValorBase: {val}, op: {op}{num}, resultado: {(op == "+" ? val + num : op == "-" ? val - num : val)}");
-        // switch (op)
-        // {
-        //     case "+": val += num; break;
-        //     case "-": val -= num; break;
-        //     case "*": val *= num; break;
-        //     case "/": if (num != 0) val /= num; break;
-        // }
-        // GameManager.Instance.ValorJugador = val;
-        // ActualizarTexto();
     }
 
     void ActualizarTexto()
