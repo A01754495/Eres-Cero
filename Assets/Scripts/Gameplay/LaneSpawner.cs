@@ -86,8 +86,60 @@ public class LaneSpawner : MonoBehaviour
         {
             if (i == carrilSolucion)
             {
-                opsCarril[i]  = diferencia >= 0 ? "+" : "-";
-                numsCarril[i] = Mathf.Abs(diferencia);
+                string op = "+";
+                int num = 0;
+
+                int intentos = 0;
+
+                do
+                {
+                    op = ops[Random.Range(0, ops.Length)];
+
+                    switch (op)
+                    {
+                        case "+":
+                            num = meta - valorBase;
+                            break;
+
+                        case "-":
+                            num = valorBase - meta;
+                            break;
+
+                        case "*":
+                            if (valorBase != 0 && meta % valorBase == 0)
+                                num = meta / valorBase;
+                            else
+                                num = -1;
+                            break;
+
+                        case "/":
+                            if (meta != 0 && valorBase % meta == 0)
+                                num = valorBase / meta;
+                            else
+                                num = -1;
+                            break;
+                    }
+
+                    intentos++;
+
+                } while ((num <= 0) && intentos < 20);
+
+                if (num <= 0)
+                {
+                    if (System.Array.Exists(ops, o => o == "+"))
+                    {
+                        op = "+";
+                        num = Mathf.Abs(meta - valorBase);
+                    }
+                    else
+                    {
+                        op = "-";
+                        num = Mathf.Abs(valorBase - meta);
+                    }
+                }
+
+                opsCarril[i]  = op;
+                numsCarril[i] = num;
                 resultados[i] = meta;
             }
             else

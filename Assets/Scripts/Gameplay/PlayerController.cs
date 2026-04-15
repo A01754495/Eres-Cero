@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     private InputAction moverIzquierda;
     private InputAction moverDerecha;
+    public bool puedeCambiarCarril = true;
 
     void Awake()
     {
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
     void CambiarCarril(int direccion)
     {
-        if (!puedeMover) return;
+        if (!puedeMover || !puedeCambiarCarril) return;
 
         carrilActual = Mathf.Clamp(carrilActual + direccion, 0, 2);
 
@@ -86,11 +87,14 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Operacion"))
         {
+            if (!puedeMover) return;
+
             CasillaOperacion casilla = other.GetComponent<CasillaOperacion>();
             if (casilla == null) return;
 
             GameManager.Instance.ValorJugador = casilla.resultadoFinal;
             ActualizarTexto();
+            puedeCambiarCarril = false;
             Destroy(other.gameObject);
         }
 
@@ -108,6 +112,8 @@ public class PlayerController : MonoBehaviour
 
                 puerta.MostrarExito();
                 ActualizarTexto();
+
+                puedeCambiarCarril = true;
 
                 FindFirstObjectByType<LaneSpawner>()?.ForzarNuevaOla();
             }
