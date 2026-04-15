@@ -15,13 +15,33 @@ public class PlayerController : MonoBehaviour
     [Header("UI: texto que muestra el valor del jugador")]
     public TextMeshPro textoValor;
 
+    public NumeroDisplay numeroDisplay;
+
     private int carrilActual = 1;
     private float xObjetivo;
     private bool puedeMover = true;
 
     private InputAction moverIzquierda;
     private InputAction moverDerecha;
+
     public bool puedeCambiarCarril = true;
+
+    // 🔥 lista de colores (igual que en SkinSelector)
+    private Color[] colores = new Color[]
+    {
+        Color.red,
+        Color.blue,
+        Color.green,
+        Color.yellow,
+        Color.cyan,
+        Color.magenta,
+        new Color(1f, 0.5f, 0f),   // naranja
+        new Color(0.6f, 0.2f, 1f), // morado
+        new Color(1f, 0.8f, 0.2f), // dorado
+        Color.white,
+        Color.gray,
+        Color.black
+    };
 
     void Awake()
     {
@@ -57,7 +77,11 @@ public class PlayerController : MonoBehaviour
     {
         carrilActual = 1;
         xObjetivo = carrilCentro;
-        ActualizarTexto();
+
+        numeroDisplay.MostrarNumero(GameManager.Instance.ValorJugador);
+
+        //  aplicar skin guardada
+        AplicarSkinGuardada();
     }
 
     void Update()
@@ -93,8 +117,10 @@ public class PlayerController : MonoBehaviour
             if (casilla == null) return;
 
             GameManager.Instance.ValorJugador = casilla.resultadoFinal;
-            ActualizarTexto();
+            numeroDisplay.MostrarNumero(GameManager.Instance.ValorJugador);
+
             puedeCambiarCarril = false;
+
             Destroy(other.gameObject);
         }
 
@@ -111,7 +137,7 @@ public class PlayerController : MonoBehaviour
                 GameManager.Instance.ValorBase = puerta.numeroMeta;
 
                 puerta.MostrarExito();
-                ActualizarTexto();
+                numeroDisplay.MostrarNumero(GameManager.Instance.ValorJugador);
 
                 puedeCambiarCarril = true;
 
@@ -126,10 +152,31 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void ActualizarTexto()
+    void AplicarSkinGuardada()
     {
-        if (textoValor != null)
-            textoValor.text = GameManager.Instance.ValorJugador.ToString();
+        int skin = PlayerPrefs.GetInt("SkinSeleccionada", 0);
+
+        if (skin < 0 || skin >= colores.Length)
+            skin = 0;
+
+        Color colorElegido = colores[skin];
+
+        // aplicar al personaje
+        var renderers = GetComponentsInChildren<SpriteRenderer>();
+
+        foreach (var sr in renderers)
+        {
+            if (sr.material != null)
+            {
+                sr.material.SetColor("_Color", colorElegido);
+            }
+        }
+
+        // aplicar a los números correctamente
+        if (numeroDisplay != null)
+        {
+            numeroDisplay.CambiarColor(colorElegido);
+        }
     }
 
     void IrGameOver()
