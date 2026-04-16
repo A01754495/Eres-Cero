@@ -1,7 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Login.uss?fileID=7433441132597879392&amp;guid=9f6977cbced8ec84490c54eb724b7107&amp;type=3#Login"/>
     <ui:VisualElement name="Root" class="root" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/background3.png?fileID=2800000&amp;guid=87b5900f6c2c69f4b892cc481709a265&amp;type=3#background3&quot;);">
-        <ui:VisualElement name="PanelLogin" class="panel" style="flex-grow: 1; display: flex;">
+        <ui:VisualElement name="PanelLogin" class="panel" style="flex-grow: 1; display: none;">
             <ui:Label text="Bienvenido a" name="TituloSuperiorLogin" class="titulo-superior" style="-unity-font-style: bold; position: absolute; top: 220px; left: 450px;"/>
             <ui:Label text="Inicia sesión" name="SubtituloLogin" class="subtitulo-login" style="position: absolute; top: 338px; left: 820px;"/>
             <ui:VisualElement name="FormularioLogin" class="formulario-login" style="flex-grow: 1; width: 1197px; position: absolute; height: 717px; top: 3px; left: 354px;">
@@ -14,14 +14,13 @@
                     <ui:TextField label="" placeholder-text="filler text" name="InputUsuarioLogin" value="Usuario" class="input-login" style="position: absolute; top: 315px; left: 638px;"/>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:Button text="Iniciar Sesión" name="BtnLogin" class="boton-principal-login" style="position: absolute; top: 714px; left: 826px;"/>
-            <ui:Label text="¿No tienes cuenta aún...?" name="TextoIrRegistro" class="texto-secundario-derecha"/>
-            <ui:Button text="Registrarse" name="BtnIrRegistro" class="boton-secundario-derecha"/>
             <ui:Image style="background-image: url(&quot;project://database/Assets/Sprites/T%C3%ADtulo.png?fileID=2800000&amp;guid=3dc6d855604c0a84986d7753c72fe844&amp;type=3#Título&quot;); height: 142px; width: 617px; position: absolute; top: 192px; left: 900px;"/>
+            <ui:Button text="" name="BtnLogin" class="boton-principal-login" style="position: absolute; top: 685px; left: 719px; background-image: url(&quot;project://database/Assets/Sprites/iniciarsesion.png?fileID=2800000&amp;guid=d940263cd608bcf458adcce6a6abb754&amp;type=3#iniciarsesion&quot;); -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgba(240, 240, 240, 0); width: 471px; border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); height: 107px;"/>
+            <ui:Label text="¿No tienes cuenta aún...?" name="TextoIrRegistro" class="texto-secundario-derecha" style="bottom: 192px; right: 95px;"/>
+            <ui:Button text="" name="BtnIrRegistro" class="boton-secundario-derecha" style="background-image: url(&quot;project://database/Assets/Sprites/registro.png?fileID=2800000&amp;guid=6110c19bb08f8ea47ba3ba062bfb9fe1&amp;type=3#registro&quot;); -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgba(240, 240, 240, 0); height: 112px; width: 317px; bottom: 80px; right: 81px; border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0);"/>
         </ui:VisualElement>
-        <ui:VisualElement name="PanelRegistro" class="panel-registro" style="flex-grow: 1; display: none; -unity-background-image-tint-color: rgb(255, 255, 255);">
-            <ui:Label text="Bienvenido a" name="TituloSuperiorRegistro" class="titulo-superior" style="position: absolute; top: 66px; left: 502px;"/>
-            <ui:Label text="Regístrate" name="SubtituloRegistro" class="subtitulo-registro" style="position: absolute; top: 164px; left: 846px;"/>
+        <ui:VisualElement name="PanelRegistro" class="panel-registro" style="flex-grow: 1; display: flex; -unity-background-image-tint-color: rgb(255, 255, 255);">
+            <ui:Label text="Bienvenido a" name="TituloSuperiorRegistro" class="titulo-superior" style="position: absolute; top: 119px; left: 461px;"/>
             <ui:VisualElement name="FormularioRegistro" class="formulario-registro" style="flex-grow: 1;">
                 <ui:VisualElement name="ColumnaLabelsRegistro" class="columna-labels" style="flex-grow: 1; position: absolute; top: 266px; left: -369px;">
                     <ui:Label text="Nombre de usuario*" name="LblUsuarioRegistro" class="label-form"/>
@@ -36,11 +35,12 @@
                     <ui:TextField label="Text Field" placeholder-text="Username" name="InputUsuarioRegistro" class="input-login"/>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:Button text="Registrarse" name="BtnRegistro" class="boton-principal-login" style="position: absolute; top: 708px; left: 812px;"/>
             <ui:Label text="Regístrate con la ayuda de tu madre, padre o tutor(a)&#10;correspondiente, o sigue las instrucciones que se te&#10;indiquen para realizarlo." name="AvisoRegistro" class="aviso-registro" style="bottom: 76px; left: 996px; -unity-text-align: upper-center;"/>
-            <ui:Label text="¿Ya tienes cuenta...?" name="TextoIrLogin" class="texto-secundario-derecha"/>
-            <ui:Button text="Iniciar sesión" name="BtnIrLogin" class="boton-secundario-derecha"/>
-            <ui:Image style="background-image: url(&quot;project://database/Assets/Sprites/T%C3%ADtulo.png?fileID=2800000&amp;guid=3dc6d855604c0a84986d7753c72fe844&amp;type=3#Título&quot;); height: 112px; width: 458px; position: absolute; top: 64px; left: 923px;"/>
+            <ui:Label text="¿Ya tienes cuenta...?" name="TextoIrLogin" class="texto-secundario-derecha" style="bottom: 180px; right: 113px;"/>
+            <ui:Image style="background-image: url(&quot;project://database/Assets/Sprites/T%C3%ADtulo.png?fileID=2800000&amp;guid=3dc6d855604c0a84986d7753c72fe844&amp;type=3#Título&quot;); height: 112px; width: 458px; position: absolute; top: 96px; left: 906px;"/>
+            <ui:Button text="" name="BtnRegistro" class="boton-principal-login" style="position: absolute; top: 664px; left: 789px; background-image: url(&quot;project://database/Assets/Sprites/registro.png?fileID=2800000&amp;guid=6110c19bb08f8ea47ba3ba062bfb9fe1&amp;type=3#registro&quot;); background-color: rgba(240, 240, 240, 0); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); height: 124px; width: 346px;"/>
+            <ui:Button text="" name="BtnIrLogin" class="boton-secundario-derecha" style="border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); background-image: url(&quot;project://database/Assets/Sprites/iniciarsesion.png?fileID=2800000&amp;guid=d940263cd608bcf458adcce6a6abb754&amp;type=3#iniciarsesion&quot;); background-color: rgba(240, 240, 240, 0); height: 100px; width: 407px; bottom: 84px; right: 60px;"/>
+            <ui:Label text="Regístrate" name="SubtituloRegistro" class="subtitulo-registro" style="position: absolute; top: 200px; left: 829px;"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
