@@ -1,9 +1,9 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Login.uss?fileID=7433441132597879392&amp;guid=9f6977cbced8ec84490c54eb724b7107&amp;type=3#Login"/>
-    <ui:VisualElement name="Root" class="root" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/fondo5.png?fileID=2800000&amp;guid=46aa7489306a0f049acd6b2f3940a2ab&amp;type=3#fondo5&quot;);">
-        <ui:VisualElement name="PanelLogin" class="panel" style="flex-grow: 1; display: none;">
+    <ui:VisualElement name="Root" class="root" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/background3.png?fileID=2800000&amp;guid=87b5900f6c2c69f4b892cc481709a265&amp;type=3#background3&quot;);">
+        <ui:VisualElement name="PanelLogin" class="panel" style="flex-grow: 1; display: flex;">
             <ui:Label text="Bienvenido a" name="TituloSuperiorLogin" class="titulo-superior" style="-unity-font-style: bold; position: absolute; top: 220px; left: 450px;"/>
-            <ui:Label text="Inicia Sesión" name="SubtituloLogin" class="subtitulo-login" style="position: absolute; top: 338px; left: 820px;"/>
+            <ui:Label text="Inicia sesión" name="SubtituloLogin" class="subtitulo-login" style="position: absolute; top: 338px; left: 820px;"/>
             <ui:VisualElement name="FormularioLogin" class="formulario-login" style="flex-grow: 1; width: 1197px; position: absolute; height: 717px; top: 3px; left: 354px;">
                 <ui:VisualElement name="ColumnaLabelsLogin" class="columna-labels" style="flex-grow: 1; position: absolute; top: 481px; left: 173px;">
                     <ui:Label text="Nombre de usuario:" name="LblUsuarioLogin" class="label-form"/>
@@ -17,9 +17,9 @@
             <ui:Button text="Iniciar Sesión" name="BtnLogin" class="boton-principal-login" style="position: absolute; top: 714px; left: 826px;"/>
             <ui:Label text="¿No tienes cuenta aún...?" name="TextoIrRegistro" class="texto-secundario-derecha"/>
             <ui:Button text="Registrarse" name="BtnIrRegistro" class="boton-secundario-derecha"/>
-            <ui:Image style="background-image: url(&quot;project://database/Assets/Sprites/Erescero.png?fileID=2800000&amp;guid=a376feec1cfa56a42b956bf7c96bc304&amp;type=3#Erescero&quot;); height: 142px; width: 617px; position: absolute; top: 192px; left: 900px;"/>
+            <ui:Image style="background-image: url(&quot;project://database/Assets/Sprites/T%C3%ADtulo.png?fileID=2800000&amp;guid=3dc6d855604c0a84986d7753c72fe844&amp;type=3#Título&quot;); height: 142px; width: 617px; position: absolute; top: 192px; left: 900px;"/>
         </ui:VisualElement>
-        <ui:VisualElement name="PanelRegistro" class="panel-registro" style="flex-grow: 1; display: flex;">
+        <ui:VisualElement name="PanelRegistro" class="panel-registro" style="flex-grow: 1; display: none; -unity-background-image-tint-color: rgb(255, 255, 255);">
             <ui:Label text="Bienvenido a" name="TituloSuperiorRegistro" class="titulo-superior" style="position: absolute; top: 66px; left: 502px;"/>
             <ui:Label text="Regístrate" name="SubtituloRegistro" class="subtitulo-registro" style="position: absolute; top: 164px; left: 846px;"/>
             <ui:VisualElement name="FormularioRegistro" class="formulario-registro" style="flex-grow: 1;">
@@ -40,7 +40,7 @@
             <ui:Label text="Regístrate con la ayuda de tu madre, padre o tutor(a)&#10;correspondiente, o sigue las instrucciones que se te&#10;indiquen para realizarlo." name="AvisoRegistro" class="aviso-registro" style="bottom: 76px; left: 996px; -unity-text-align: upper-center;"/>
             <ui:Label text="¿Ya tienes cuenta...?" name="TextoIrLogin" class="texto-secundario-derecha"/>
             <ui:Button text="Iniciar sesión" name="BtnIrLogin" class="boton-secundario-derecha"/>
-            <ui:Image style="background-image: url(&quot;project://database/Assets/Sprites/Erescero.png?fileID=2800000&amp;guid=a376feec1cfa56a42b956bf7c96bc304&amp;type=3#Erescero&quot;); height: 112px; width: 458px; position: absolute; top: 64px; left: 923px;"/>
+            <ui:Image style="background-image: url(&quot;project://database/Assets/Sprites/T%C3%ADtulo.png?fileID=2800000&amp;guid=3dc6d855604c0a84986d7753c72fe844&amp;type=3#Título&quot;); height: 112px; width: 458px; position: absolute; top: 64px; left: 923px;"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

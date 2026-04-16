@@ -1,7 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Aspectos.uss?fileID=7433441132597879392&amp;guid=c2519e158ba55fe44a6bf0a9c47e727b&amp;type=3#Aspectos"/>
-    <ui:VisualElement name="Root" class="root" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/fondo7.png?fileID=2800000&amp;guid=0d1006ab60ecf824faed03f00dff3f1f&amp;type=3#fondo7&quot;);">
-        <ui:Label text="Elije tu personaje" name="Titulo" class="titulo"/>
+    <ui:VisualElement name="Root" class="root" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/background3.png?fileID=2800000&amp;guid=87b5900f6c2c69f4b892cc481709a265&amp;type=3#background3&quot;);">
+        <ui:Label text="" name="Titulo" class="titulo" style="background-image: url(&quot;project://database/Assets/Sprites/Captura%20de%20pantalla%202026-04-15%20183146.png?fileID=2800000&amp;guid=32cef2d4154e6c642bfeea6e4167dae9&amp;type=3#Captura de pantalla 2026-04-15 183146&quot;); width: 735px; height: 119px; position: absolute; top: 89px; left: 573px;"/>
         <ui:VisualElement name="ContenedorPrincipal" class="contenedor-principal" style="flex-grow: 1;"/>
         <ui:VisualElement name="GridPersonajes" class="grid-personajes" style="flex-grow: 1; position: absolute; top: 302px; left: 204px; width: 781px;">
             <ui:Button text="Button" name="BtnSkin1" class="boton-skin" style="background-image: url(&quot;project://database/Assets/Sprites/personaje1.png?fileID=2800000&amp;guid=d7e023cdd0249d348b87d27d86167093&amp;type=3#personaje1&quot;);"/>
@@ -20,8 +20,8 @@
         <ui:VisualElement name="PanelPreview" class="panel-preview" style="flex-grow: 1; width: 860px; position: absolute; height: 728px; top: 233px; left: 1006px; overflow: visible; visibility: visible;">
             <ui:Label text="Vista Previa" class="texto-preview"/>
             <ui:Image name="ImagenPreview" class="preview-img" style="position: absolute; height: 366px; width: 344px; top: 77px; left: 274px;"/>
-            <ui:Button text="Seleccionar" name="BtnSeleccionar" class="boton-seleccionar" style="position: absolute; top: 537px; left: 335px;"/>
-            <ui:Button text="Volver al menú" name="BtnVolver" class="boton-volver" style="position: absolute; top: 637px; left: 337px;"/>
+            <ui:Button text="" name="BtnSeleccionar" class="boton-seleccionar" style="position: absolute; top: 532px; left: 291px; background-image: url(&quot;project://database/Assets/Sprites/Captura%20de%20pantalla%202026-04-15%20185055-Photoroom.png?fileID=2800000&amp;guid=ea6a60bde78db6e4e91ca8400bad6705&amp;type=3#Captura de pantalla 2026-04-15 185055-Photoroom&quot;); background-color: rgba(70, 120, 255, 0); width: 298px; border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0);"/>
+            <ui:Button text="" name="BtnVolver" class="boton-volver" style="position: absolute; top: 619px; left: 308px; background-color: rgba(40, 180, 120, 0); background-image: url(&quot;project://database/Assets/Sprites/volvermenu.png?fileID=2800000&amp;guid=d8476012e9cd5844da8932b1ddf24e13&amp;type=3#volvermenu&quot;); width: 250px; -unity-background-image-tint-color: rgb(255, 255, 255); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); height: 63px;"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
