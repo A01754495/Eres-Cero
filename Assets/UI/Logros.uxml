@@ -48,6 +48,6 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:ScrollView>
-        <ui:Button text="Volver al menú" name="BtnVolver" enable-rich-text="true" class="boton-volver" style="height: 83px; width: 345px; background-image: url(&quot;project://database/Assets/Sprites/volvermenu.png?fileID=2800000&amp;guid=d8476012e9cd5844da8932b1ddf24e13&amp;type=3#volvermenu&quot;); background-color: rgba(40, 180, 120, 0); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); bottom: 70px; left: 105px;"/>
+        <ui:Button text="" name="BtnVolver" enable-rich-text="true" class="boton-volver boton" style="height: 83px; width: 345px; background-image: url(&quot;project://database/Assets/Sprites/volvermenu.png?fileID=2800000&amp;guid=d8476012e9cd5844da8932b1ddf24e13&amp;type=3#volvermenu&quot;); background-color: rgba(40, 180, 120, 0); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); bottom: 70px; left: 105px;"/>
     </ui:VisualElement>
 </ui:UXML>

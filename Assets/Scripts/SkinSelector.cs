@@ -3,7 +3,6 @@ using UnityEngine.UIElements;
 
 public class SkinSelector : MonoBehaviour
 {
-    // Lista de colores (puedes agregar más)
     private Color[] colores = new Color[]
     {
         Color.red,
@@ -12,9 +11,9 @@ public class SkinSelector : MonoBehaviour
         Color.yellow,
         Color.cyan,
         Color.magenta,
-        new Color(1f, 0.5f, 0f),   // naranja
-        new Color(0.6f, 0.2f, 1f), // morado
-        new Color(1f, 0.8f, 0.2f), // dorado
+        new Color(1f, 0.5f, 0f),
+        new Color(0.6f, 0.2f, 1f),
+        new Color(1f, 0.8f, 0.2f),
         Color.white,
         Color.gray,
         Color.black
@@ -23,12 +22,17 @@ public class SkinSelector : MonoBehaviour
     private Image preview;
     private int skinSeleccionada = 0;
 
+    //  BOTONES 
+    private Button btnSeleccionar;
+    private Button btnSeleccionado;
+
     void Start()
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
 
         preview = root.Q<Image>("ImagenPreview");
 
+        // BOTONES SKIN
         for (int i = 0; i < colores.Length; i++)
         {
             int index = i;
@@ -43,7 +47,15 @@ public class SkinSelector : MonoBehaviour
             }
         }
 
-        root.Q<Button>("BtnSeleccionar").clicked += ConfirmarSkin;
+        //  BOTONES DE SELECCIÓN 
+        btnSeleccionar = root.Q<Button>("BtnSeleccionar");
+        btnSeleccionado = root.Q<Button>("BtnSeleccionado");
+
+        //  IMPORTANTE: ocultar el de seleccionado al inicio 
+        btnSeleccionado.style.display = DisplayStyle.None;
+
+        // EVENTO
+        btnSeleccionar.clicked += ConfirmarSkin;
 
         // cargar skin guardada
         skinSeleccionada = PlayerPrefs.GetInt("SkinSeleccionada", 0);
@@ -54,10 +66,10 @@ public class SkinSelector : MonoBehaviour
     {
         skinSeleccionada = index;
 
-        // 🔥 preview
+        // preview
         preview.style.backgroundColor = new StyleColor(colores[index]);
 
-        // 🔥 aplicar al jugador
+        // aplicar al jugador
         AplicarColor(colores[index]);
     }
 
@@ -65,6 +77,10 @@ public class SkinSelector : MonoBehaviour
     {
         PlayerPrefs.SetInt("SkinSeleccionada", skinSeleccionada);
         Debug.Log("Skin guardada: " + skinSeleccionada);
+
+        //  INTERCAMBIO DE BOTONES 
+        btnSeleccionar.style.display = DisplayStyle.None;
+        btnSeleccionado.style.display = DisplayStyle.Flex;
     }
 
     void AplicarColor(Color color)

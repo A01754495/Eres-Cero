@@ -6,8 +6,14 @@
     color: white;
     unity-text-align: middle-center;
 }
+
 .botonesGO {
     flex-direction: row;
     gap: 20px;
     justify-content: center;
+}
+
+.boton:hover {
+    transition-duration: 0.5s;
+    scale: 1.2 1.2;
 }

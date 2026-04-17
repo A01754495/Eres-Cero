@@ -23,10 +23,17 @@
     -unity-background-image-tint-color: rgba(0, 0, 0, 0.99);
     background-color: rgba(0, 0, 0, 0.91);
 }
+
 .boton-ranking {
     width: 260px;
     height: 80px;
     font-size: 28px;
-    color: #444;
-    background-color: rgb(240,240,240);
+    color: rgb(68, 68, 68);
+    background-color: rgb(240, 240, 240);
+}
+
+.boton:hover {
+    scale: 1.2 1.2;
+    transition-duration: 0.5s;
+    transition-delay: 0s;
 }
