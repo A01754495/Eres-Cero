@@ -3,6 +3,7 @@ using UnityEngine.UIElements;
 
 public class SkinSelector : MonoBehaviour
 {
+    //  COLORES (LÓGICA) 
     private Color[] colores = new Color[]
     {
         Color.red,
@@ -19,10 +20,12 @@ public class SkinSelector : MonoBehaviour
         Color.black
     };
 
-    private Image preview;
+    //  IMÁGENES (VISUAL) 
+    public Texture2D[] skins;
+
+    private VisualElement preview;
     private int skinSeleccionada = 0;
 
-    //  BOTONES 
     private Button btnSeleccionar;
     private Button btnSeleccionado;
 
@@ -30,7 +33,7 @@ public class SkinSelector : MonoBehaviour
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
 
-        preview = root.Q<Image>("ImagenPreview");
+        preview = root.Q<VisualElement>("ImagenPreview");
 
         // BOTONES SKIN
         for (int i = 0; i < colores.Length; i++)
@@ -47,14 +50,12 @@ public class SkinSelector : MonoBehaviour
             }
         }
 
-        //  BOTONES DE SELECCIÓN 
+        // BOTONES
         btnSeleccionar = root.Q<Button>("BtnSeleccionar");
         btnSeleccionado = root.Q<Button>("BtnSeleccionado");
 
-        //  IMPORTANTE: ocultar el de seleccionado al inicio 
         btnSeleccionado.style.display = DisplayStyle.None;
 
-        // EVENTO
         btnSeleccionar.clicked += ConfirmarSkin;
 
         // cargar skin guardada
@@ -66,19 +67,27 @@ public class SkinSelector : MonoBehaviour
     {
         skinSeleccionada = index;
 
-        // preview
-        preview.style.backgroundColor = new StyleColor(colores[index]);
-
-        // aplicar al jugador
+        //  LÓGICA → SIEMPRE COLOR 
         AplicarColor(colores[index]);
+
+        //  VISUAL → IMAGEN SI EXISTE 
+        if (skins != null && index < skins.Length && skins[index] != null)
+        {
+            preview.style.backgroundImage = new StyleBackground(skins[index]);
+            preview.style.backgroundColor = Color.clear;
+        }
+        else
+        {
+            // fallback si no hay imagen
+            preview.style.backgroundImage = null;
+            preview.style.backgroundColor = new StyleColor(colores[index]);
+        }
     }
 
     void ConfirmarSkin()
     {
         PlayerPrefs.SetInt("SkinSeleccionada", skinSeleccionada);
-        Debug.Log("Skin guardada: " + skinSeleccionada);
 
-        //  INTERCAMBIO DE BOTONES 
         btnSeleccionar.style.display = DisplayStyle.None;
         btnSeleccionado.style.display = DisplayStyle.Flex;
     }
