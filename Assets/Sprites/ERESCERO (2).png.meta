@@ -1,0 +1,1352 @@
+fileFormatVersion: 2
+guid: 39b023ac0e784aa449960325f92b13e1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -854438446903834238
+    second: ERESCERO (2)_0
+  - first:
+      213: -2792662851881902597
+    second: ERESCERO (2)_1
+  - first:
+      213: 522268289705180148
+    second: ERESCERO (2)_2
+  - first:
+      213: -6986179354637058529
+    second: ERESCERO (2)_3
+  - first:
+      213: 3376812837846796326
+    second: ERESCERO (2)_4
+  - first:
+      213: 2545181953038902183
+    second: ERESCERO (2)_5
+  - first:
+      213: 882877722023270460
+    second: ERESCERO (2)_6
+  - first:
+      213: 8954075507592257926
+    second: ERESCERO (2)_7
+  - first:
+      213: 2004827758822240820
+    second: ERESCERO (2)_8
+  - first:
+      213: 8650334474030015379
+    second: ERESCERO (2)_9
+  - first:
+      213: -7131108836201459740
+    second: ERESCERO (2)_10
+  - first:
+      213: 7692733663716663290
+    second: ERESCERO (2)_11
+  - first:
+      213: 6077994934674895888
+    second: ERESCERO (2)_12
+  - first:
+      213: 1531172245152703229
+    second: ERESCERO (2)_13
+  - first:
+      213: -4298867752092872905
+    second: ERESCERO (2)_14
+  - first:
+      213: -5620484739559816661
+    second: ERESCERO (2)_15
+  - first:
+      213: -4486804063616238619
+    second: ERESCERO (2)_16
+  - first:
+      213: -8462185579631167097
+    second: ERESCERO (2)_17
+  - first:
+      213: 7681273908353435305
+    second: ERESCERO (2)_18
+  - first:
+      213: 368914853207147550
+    second: ERESCERO (2)_19
+  - first:
+      213: -1313432851856879948
+    second: ERESCERO (2)_20
+  - first:
+      213: 3438479891718602715
+    second: ERESCERO (2)_21
+  - first:
+      213: -1737847865785487123
+    second: ERESCERO (2)_22
+  - first:
+      213: -5810072122440647542
+    second: ERESCERO (2)_23
+  - first:
+      213: 6471498107967884517
+    second: ERESCERO (2)_24
+  - first:
+      213: -4867241838194205885
+    second: ERESCERO (2)_25
+  - first:
+      213: 5337820179029800438
+    second: ERESCERO (2)_26
+  - first:
+      213: -8666558195670834347
+    second: ERESCERO (2)_27
+  - first:
+      213: 463507511220503803
+    second: ERESCERO (2)_28
+  - first:
+      213: 2882495382495183034
+    second: ERESCERO (2)_29
+  - first:
+      213: -7530248404267189788
+    second: ERESCERO (2)_30
+  - first:
+      213: 4168955960150737110
+    second: ERESCERO (2)_31
+  - first:
+      213: 5147993473550557755
+    second: ERESCERO (2)_32
+  - first:
+      213: 675744289849958615
+    second: ERESCERO (2)_33
+  - first:
+      213: -4041303820160692399
+    second: ERESCERO (2)_34
+  - first:
+      213: -3311622501989344627
+    second: ERESCERO (2)_35
+  - first:
+      213: 8371560807037134639
+    second: ERESCERO (2)_36
+  - first:
+      213: -7419934809712031673
+    second: ERESCERO (2)_37
+  - first:
+      213: -5993645331551302695
+    second: ERESCERO (2)_38
+  - first:
+      213: 2377743310857759523
+    second: ERESCERO (2)_39
+  - first:
+      213: -5082444323414615770
+    second: ERESCERO (2)_40
+  - first:
+      213: 8784288757142934229
+    second: ERESCERO (2)_41
+  - first:
+      213: 8587695302004884605
+    second: ERESCERO (2)_42
+  - first:
+      213: 2750775900830191361
+    second: ERESCERO (2)_43
+  - first:
+      213: -1248042154970213778
+    second: ERESCERO (2)_44
+  - first:
+      213: -4668791189824264115
+    second: ERESCERO (2)_45
+  - first:
+      213: -7287091588410739583
+    second: ERESCERO (2)_46
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ERESCERO (2)_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 162
+        width: 85
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2894cd172cc6424f0800000000000000
+      internalID: -854438446903834238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_1
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 214
+        width: 342
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfd5620bee77e39d0800000000000000
+      internalID: -2792662851881902597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_2
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 212
+        width: 22
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fbf35d0e387f3700800000000000000
+      internalID: 522268289705180148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_3
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 214
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1eb0bd24ea1c0f90800000000000000
+      internalID: -6986179354637058529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_4
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 214
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62846d88269dcde20800000000000000
+      internalID: 3376812837846796326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_5
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 208
+        width: 408
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a36e97508d425320800000000000000
+      internalID: 2545181953038902183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_6
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 220
+        width: 273
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c389d494c9c904c00800000000000000
+      internalID: 882877722023270460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_7
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 216
+        width: 117
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 681ef02cb34434c70800000000000000
+      internalID: 8954075507592257926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_8
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 218
+        width: 17
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4323170893492db10800000000000000
+      internalID: 2004827758822240820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_9
+      rect:
+        serializedVersion: 2
+        x: 939
+        y: 211
+        width: 46
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 393efd86f592c0870800000000000000
+      internalID: 8650334474030015379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_10
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 160
+        width: 99
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ef0093bb46390d90800000000000000
+      internalID: -7131108836201459740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_11
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 205
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aff5581628412ca60800000000000000
+      internalID: 7692733663716663290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_12
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 201
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 014bbe3c030695450800000000000000
+      internalID: 6077994934674895888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_13
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 201
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df2a3426b01df3510800000000000000
+      internalID: 1531172245152703229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2
+        width: 382
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73f4f1c4e8a5754c0800000000000000
+      internalID: -4298867752092872905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_15
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 64
+        width: 97
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b22880178e60002b0800000000000000
+      internalID: -5620484739559816661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_16
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 64
+        width: 94
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ebff5be97babb1c0800000000000000
+      internalID: -4486804063616238619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_17
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 63
+        width: 96
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 789b6a6cc07409a80800000000000000
+      internalID: -8462185579631167097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_18
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 64
+        width: 98
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a602e92ced599a60800000000000000
+      internalID: 7681273908353435305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_19
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 63
+        width: 100
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1407c9ba16ae1500800000000000000
+      internalID: 368914853207147550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_20
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 64
+        width: 101
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4be0eb4b7cfb5cde0800000000000000
+      internalID: -1313432851856879948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_21
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 82
+        width: 81
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdff5316e3fe7bf20800000000000000
+      internalID: 3438479891718602715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_22
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 99
+        width: 39
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de07f26d29ce1e7e0800000000000000
+      internalID: -1737847865785487123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_23
+      rect:
+        serializedVersion: 2
+        x: 1047
+        y: 144
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8c768e003a7e5fa0800000000000000
+      internalID: -5810072122440647542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_24
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 142
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ecc902ed316fc950800000000000000
+      internalID: 6471498107967884517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_25
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 82
+        width: 19
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34bd38ef555147cb0800000000000000
+      internalID: -4867241838194205885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_26
+      rect:
+        serializedVersion: 2
+        x: 1047
+        y: 135
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f5bbfdfb2fb31a40800000000000000
+      internalID: 5337820179029800438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_27
+      rect:
+        serializedVersion: 2
+        x: 1042
+        y: 107
+        width: 20
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5532ac90d333ab780800000000000000
+      internalID: -8666558195670834347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_28
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 61
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf4060d20a5be6600800000000000000
+      internalID: 463507511220503803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_29
+      rect:
+        serializedVersion: 2
+        x: 1025
+        y: 80
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab0445c374ea00820800000000000000
+      internalID: 2882495382495183034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_30
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 87
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e9b33929fe2f7790800000000000000
+      internalID: -7530248404267189788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_31
+      rect:
+        serializedVersion: 2
+        x: 1038
+        y: 88
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d048019b5b1bd930800000000000000
+      internalID: 4168955960150737110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_32
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 72
+        width: 8
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b32a209f9c8517740800000000000000
+      internalID: 5147993473550557755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_33
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 45
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d06183f9d9b06900800000000000000
+      internalID: 675744289849958615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_34
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 45
+        width: 20
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15f84e956976ae7c0800000000000000
+      internalID: -4041303820160692399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_35
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 2
+        width: 124
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8a1cb251e0ca02d0800000000000000
+      internalID: -3311622501989344627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_36
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 14
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f27e7071332cd2470800000000000000
+      internalID: 8371560807037134639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_37
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 13
+        width: 268
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7480f826a98170990800000000000000
+      internalID: -7419934809712031673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_38
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 23
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dbc43f935b42dca0800000000000000
+      internalID: -5993645331551302695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_39
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 14
+        width: 221
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32becb281f07ff020800000000000000
+      internalID: 2377743310857759523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_40
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 23
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 629db28d0d78779b0800000000000000
+      internalID: -5082444323414615770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_41
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 15
+        width: 176
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d256fd551018e970800000000000000
+      internalID: 8784288757142934229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_42
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 14
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d74ca4ba06f9d2770800000000000000
+      internalID: 8587695302004884605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_43
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 14
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10f40b98b18bc2620800000000000000
+      internalID: 2750775900830191361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_44
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 3
+        width: 43
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e629940c5401eaee0800000000000000
+      internalID: -1248042154970213778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_45
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 4
+        width: 39
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d482d00362f153fb0800000000000000
+      internalID: -4668791189824264115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ERESCERO (2)_46
+      rect:
+        serializedVersion: 2
+        x: 956
+        y: 8
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1847a0b1fcc0fda90800000000000000
+      internalID: -7287091588410739583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ERESCERO (2)_0: -854438446903834238
+      ERESCERO (2)_1: -2792662851881902597
+      ERESCERO (2)_10: -7131108836201459740
+      ERESCERO (2)_11: 7692733663716663290
+      ERESCERO (2)_12: 6077994934674895888
+      ERESCERO (2)_13: 1531172245152703229
+      ERESCERO (2)_14: -4298867752092872905
+      ERESCERO (2)_15: -5620484739559816661
+      ERESCERO (2)_16: -4486804063616238619
+      ERESCERO (2)_17: -8462185579631167097
+      ERESCERO (2)_18: 7681273908353435305
+      ERESCERO (2)_19: 368914853207147550
+      ERESCERO (2)_2: 522268289705180148
+      ERESCERO (2)_20: -1313432851856879948
+      ERESCERO (2)_21: 3438479891718602715
+      ERESCERO (2)_22: -1737847865785487123
+      ERESCERO (2)_23: -5810072122440647542
+      ERESCERO (2)_24: 6471498107967884517
+      ERESCERO (2)_25: -4867241838194205885
+      ERESCERO (2)_26: 5337820179029800438
+      ERESCERO (2)_27: -8666558195670834347
+      ERESCERO (2)_28: 463507511220503803
+      ERESCERO (2)_29: 2882495382495183034
+      ERESCERO (2)_3: -6986179354637058529
+      ERESCERO (2)_30: -7530248404267189788
+      ERESCERO (2)_31: 4168955960150737110
+      ERESCERO (2)_32: 5147993473550557755
+      ERESCERO (2)_33: 675744289849958615
+      ERESCERO (2)_34: -4041303820160692399
+      ERESCERO (2)_35: -3311622501989344627
+      ERESCERO (2)_36: 8371560807037134639
+      ERESCERO (2)_37: -7419934809712031673
+      ERESCERO (2)_38: -5993645331551302695
+      ERESCERO (2)_39: 2377743310857759523
+      ERESCERO (2)_4: 3376812837846796326
+      ERESCERO (2)_40: -5082444323414615770
+      ERESCERO (2)_41: 8784288757142934229
+      ERESCERO (2)_42: 8587695302004884605
+      ERESCERO (2)_43: 2750775900830191361
+      ERESCERO (2)_44: -1248042154970213778
+      ERESCERO (2)_45: -4668791189824264115
+      ERESCERO (2)_46: -7287091588410739583
+      ERESCERO (2)_5: 2545181953038902183
+      ERESCERO (2)_6: 882877722023270460
+      ERESCERO (2)_7: 8954075507592257926
+      ERESCERO (2)_8: 2004827758822240820
+      ERESCERO (2)_9: 8650334474030015379
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
