@@ -190,7 +190,6 @@ public class LaneSpawner : MonoBehaviour
 
         GameObject puertaGO = Instantiate(prefabPuerta, transform);
         puertaGO.transform.position = new Vector3(carrilCentro, spawnY + distanciaPuerta, 0f);
-
         PuertaController puerta = puertaGO.GetComponent<PuertaController>();
         if (puerta != null)
             puerta.Configurar(meta);

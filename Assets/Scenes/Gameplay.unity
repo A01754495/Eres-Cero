@@ -151,9 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d47f282dd046846a837b4a98818108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  carrilIzquierda: -6.4
+  carrilIzquierda: -4.3
   carrilCentro: 0
-  carrilDerecha: 6.4
+  carrilDerecha: 4.3
   velocidadMovimiento: 12
   textoValor: {fileID: 1044286545}
   numeroDisplay: {fileID: 1343324448}
@@ -338,9 +338,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LaneSpawner
   prefabCasilla: {fileID: 4897654630045791524, guid: c01358a1c43951b4abc927a0526fb2ea, type: 3}
   prefabPuerta: {fileID: 6431611982193806687, guid: 6f65e26cfa34cf9479cda94c82c27a2f, type: 3}
-  carrilIzquierda: -6.4
+  carrilIzquierda: -4.3
   carrilCentro: 0
-  carrilDerecha: 6.4
+  carrilDerecha: 4.3
   spawnY: 6.4
   destroyY: -6.4
   distanciaPuerta: 2.7
@@ -495,6 +495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 843380050}
   - component: {fileID: 843380049}
+  - component: {fileID: 843380051}
   m_Layer: 0
   m_Name: back8_0
   m_TagString: Untagged
@@ -551,7 +552,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -6339163943130924660, guid: 0f14a4cba980efa4b8e3a76fba1063b3, type: 3}
+  m_Sprite: {fileID: -2950666404873648260, guid: 777bba3de5bc18349b5068808d919e0b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -571,11 +572,25 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2488744, y: 1.0494562, z: 1}
+  m_LocalScale: {x: 1.427285, y: 1.399275, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &843380051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843380048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c726961eaacffe46b275baefd915b19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BackgroundScroll
+  velocidadMultiplicador: 0.3
+  alturaSprite: 10.24
 --- !u!1 &993489521
 GameObject:
   m_ObjectHideFlags: 0

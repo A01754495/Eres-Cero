@@ -37,3 +37,17 @@
     transition-duration: 0.5s;
     transition-delay: 0s;
 }
+
+.lista {
+    width: 60%;
+    align-self: center;
+    flex-grow: 1;
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    right: 25%;
+    bottom: 30%;
+    background-color: rgba(0, 0, 0, 0.51);
+    -unity-font-style: bold;
+    font-size: 20px;
+}
