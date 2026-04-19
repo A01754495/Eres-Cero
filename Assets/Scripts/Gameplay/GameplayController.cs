@@ -1,6 +1,11 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
+// ================================================================
+// GameplayController — HUD durante el juego
+// Actualiza puntaje, valor del jugador y acumula tiempo de partida
+// ================================================================
+
 public class GameplayController : MonoBehaviour
 {
     private UIDocument ui;
@@ -10,11 +15,8 @@ public class GameplayController : MonoBehaviour
     void OnEnable()
     {
         ui = GetComponent<UIDocument>();
-        if (ui == null) return; // si no hay UIDocument, no hace nada
-
+        if (ui == null) return;
         var root = ui.rootVisualElement;
-        if (root == null) return;
-
         labelPuntaje = root.Q<Label>("LabelPuntaje");
         labelValor   = root.Q<Label>("LabelValor");
     }
@@ -22,6 +24,9 @@ public class GameplayController : MonoBehaviour
     void Update()
     {
         if (GameManager.Instance == null) return;
+
+        // Acumular tiempo de partida para guardarlo en la BD al terminar
+        GameManager.Instance.ActualizarTiempo();
 
         if (labelPuntaje != null)
             labelPuntaje.text = "PUNTAJE: " + GameManager.Instance.Puntaje;

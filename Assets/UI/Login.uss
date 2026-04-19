@@ -54,7 +54,7 @@
     height: 55px;
     margin-bottom: 30px;
     font-size: 22px;
-    color: white;
+    color: rgb(0, 0, 0);
     background-color: rgba(180, 185, 205, 0.75);
 }
 
