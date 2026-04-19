@@ -29,10 +29,10 @@
                     <ui:Label text="Confirmar NIP*" name="LblPinRegistro" class="label-form"/>
                 </ui:VisualElement>
                 <ui:VisualElement name="ColumnaInputsRegistro" class="columna-inputs" style="flex-grow: 1; position: absolute; top: 264px; left: 110px;">
-                    <ui:TextField label="Text Field" placeholder-text="******" name="InputPinRegistro" class="input-login"/>
+                    <ui:TextField label="Text Field" placeholder-text="******" name="InputUsuarioRegistro" class="input-login"/>
                     <ui:TextField label="Text Field" placeholder-text="Año de Nacimiento" name="InputAnioRegistro" class="input-login"/>
                     <ui:TextField label="Text Field" placeholder-text="email" name="InputCorreoRegistro" class="input-login"/>
-                    <ui:TextField label="Text Field" placeholder-text="Username" name="InputUsuarioRegistro" class="input-login"/>
+                    <ui:TextField label="Text Field" placeholder-text="Username" name="InputPinRegistro" class="input-login"/>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:Label text="Regístrate con la ayuda de tu madre, padre o tutor(a)&#10;correspondiente, o sigue las instrucciones que se te&#10;indiquen para realizarlo." name="AvisoRegistro" class="aviso-registro" style="bottom: 76px; left: 996px; -unity-text-align: upper-center;"/>
