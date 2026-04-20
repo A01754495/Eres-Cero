@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 public class RankingsController : MonoBehaviour
 {
-    private const string URL_BASE = "http://localhost:3000";
+    private const string URL_BASE = "https://ygtfxb3dtnzrhhgw4sixxcynsq0qnzpw.lambda-url.us-east-1.on.aws";
     private const int    TIMEOUT  = 5; // segundos antes de mostrar error
 
     private UIDocument ui;

@@ -124,7 +124,7 @@ public class LoginController : MonoBehaviour
 
         // ── SIN BACKEND: validación local + ir al menú ──────────────
         // if (btnLogin    != null) btnLogin.RegisterCallback<ClickEvent>(OnLoginSinBackend);
-        if (btnRegistro != null) btnRegistro.RegisterCallback<ClickEvent>(OnRegistroSinBackend);
+        if (btnRegistro != null) btnRegistro.RegisterCallback<ClickEvent>(_ => StartCoroutine(CoroutineRegistro()));
 
         // TODO BACKEND: comenta las 2 líneas de arriba y descomenta estas:
         if (btnLogin    != null) btnLogin.RegisterCallback<ClickEvent>(_ => StartCoroutine(CoroutineLogin()));
@@ -137,7 +137,7 @@ public class LoginController : MonoBehaviour
         if (btnIrLogin    != null) btnIrLogin.UnregisterCallback<ClickEvent>(OnIrLogin);
         if (btnVolver     != null) btnVolver.UnregisterCallback<ClickEvent>(OnVolver);
         // if (btnLogin      != null) btnLogin.UnregisterCallback<ClickEvent>(OnLoginSinBackend);
-        if (btnRegistro   != null) btnRegistro.UnregisterCallback<ClickEvent>(OnRegistroSinBackend);
+        // if (btnRegistro   != null) btnRegistro.UnregisterCallback<ClickEvent>(OnRegistroSinBackend);
 
 
         // if (btnLogin      != null) btnLogin.UnregisterCallback<ClickEvent>(_ => StopCoroutine(CoroutineLogin()));
@@ -382,46 +382,46 @@ public class LoginController : MonoBehaviour
     //       el jugador solo lo VE, no lo escribe
     // ================================================================
 
-    // IEnumerator CoroutineRegistro()
-    // {
-    //     LimpiarErrores();
-    //     string alias  = campoAliasRegistro?.value?.Trim() ?? "";
-    //     string correo = campoCorreoRegistro?.value?.Trim() ?? "";
-    //     string anio   = campoAnioRegistro?.value?.Trim() ?? "";
-    //
-    //     // Validaciones locales primero
-    //     if (!ValidarAlias(alias, out string eAlias, esLogin: false))
-    //     { MostrarError(labelErrorRegistro, eAlias); MarcarRojo(campoAliasRegistro); yield break; }
-    //     if (!ValidarCorreo(correo, out string eCorreo))
-    //     { MostrarError(labelErrorRegistro, eCorreo); MarcarRojo(campoCorreoRegistro); yield break; }
-    //     if (!ValidarAnio(anio, out string eAnio))
-    //     { MostrarError(labelErrorRegistro, eAnio); MarcarRojo(campoAnioRegistro); yield break; }
-    //
-    //     // Llamada al servidor — se envía el NIP generado por el sistema
-    //     string body = $"{{\"alias\":\"{alias}\",\"correo\":\"{correo}\"," +
-    //                   $"\"anioNacimiento\":{anio},\"nip\":{nipGenerado}}}";
-    //     using var req = new UnityWebRequest($"{URL_BASE}/registro", "POST");
-    //     req.uploadHandler   = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(body));
-    //     req.downloadHandler = new DownloadHandlerBuffer();
-    //     req.SetRequestHeader("Content-Type", "application/json");
-    //     yield return req.SendWebRequest();
-    //
-    //     if (req.result != UnityWebRequest.Result.Success)
-    //     { MostrarError(labelErrorRegistro, "Error de conexión. Intenta de nuevo."); yield break; }
-    //
-    //     var resp = JsonUtility.FromJson<RespuestaRegistro>(req.downloadHandler.text);
-    //     if (!string.IsNullOrEmpty(resp.error))
-    //     { MostrarError(labelErrorRegistro, resp.error); yield break; }
-    //
-    //     // CU-01 paso 6: sesión automática tras registro exitoso
-    //     GameManager.Instance.IdJugador    = resp.idJugador;
-    //     GameManager.Instance.AliasJugador = resp.alias;
-    //     SceneManager.LoadScene("MenuPrincipal");
-    // }
+    IEnumerator CoroutineRegistro()
+    {
+        LimpiarErrores();
+        string alias  = campoAliasRegistro?.value?.Trim() ?? "";
+        string correo = campoCorreoRegistro?.value?.Trim() ?? "";
+        string anio   = campoAnioRegistro?.value?.Trim() ?? "";
+    
+        // Validaciones locales primero
+        if (!ValidarAlias(alias, out string eAlias, esLogin: false))
+        { MostrarError(labelErrorRegistro, eAlias); MarcarRojo(campoAliasRegistro); yield break; }
+        if (!ValidarCorreo(correo, out string eCorreo))
+        { MostrarError(labelErrorRegistro, eCorreo); MarcarRojo(campoCorreoRegistro); yield break; }
+        if (!ValidarAnio(anio, out string eAnio))
+        { MostrarError(labelErrorRegistro, eAnio); MarcarRojo(campoAnioRegistro); yield break; }
+    
+        // Llamada al servidor — se envía el NIP generado por el sistema
+        string body = $"{{\"alias\":\"{alias}\",\"correo\":\"{correo}\"," +
+                      $"\"anioNacimiento\":{anio},\"nip\":{nipGenerado}}}";
+        using var req = new UnityWebRequest($"{URL_BASE}/registro", "POST");
+        req.uploadHandler   = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(body));
+        req.downloadHandler = new DownloadHandlerBuffer();
+        req.SetRequestHeader("Content-Type", "application/json");
+        yield return req.SendWebRequest();
+    
+        if (req.result != UnityWebRequest.Result.Success)
+        { MostrarError(labelErrorRegistro, "Error de conexión. Intenta de nuevo."); yield break; }
+    
+        var resp = JsonUtility.FromJson<RespuestaRegistro>(req.downloadHandler.text);
+        if (!string.IsNullOrEmpty(resp.error))
+        { MostrarError(labelErrorRegistro, resp.error); yield break; }
+    
+        // CU-01 paso 6: sesión automática tras registro exitoso
+        GameManager.Instance.IdJugador    = resp.idJugador;
+        GameManager.Instance.AliasJugador = resp.alias;
+        SceneManager.LoadScene("MenuPrincipal");
+    }
 
     // ================================================================
     // Clases de datos — descomentar junto con las coroutines
     // ================================================================
     [System.Serializable] private class RespuestaLogin   { public int idJugador; public string alias; public string error; }
-    // [System.Serializable] private class RespuestaRegistro{ public int idJugador; public string alias; public string error; }
+    [System.Serializable] private class RespuestaRegistro{ public int idJugador; public string alias; public string error; }
 }
