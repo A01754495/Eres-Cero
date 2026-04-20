@@ -31,7 +31,7 @@ using System.Text.RegularExpressions;
 public class LoginController : MonoBehaviour
 {
     // TODO BACKEND: cambia esta URL por la del servidor real
-    private const string URL_BASE = "http://localhost:3000";
+    private const string URL_BASE = "https://ygtfxb3dtnzrhhgw4sixxcynsq0qnzpw.lambda-url.us-east-1.on.aws";
 
     private UIDocument ui;
 
@@ -123,11 +123,11 @@ public class LoginController : MonoBehaviour
         if (btnVolver     != null) btnVolver.RegisterCallback<ClickEvent>(OnVolver);
 
         // ── SIN BACKEND: validación local + ir al menú ──────────────
-        if (btnLogin    != null) btnLogin.RegisterCallback<ClickEvent>(OnLoginSinBackend);
+        // if (btnLogin    != null) btnLogin.RegisterCallback<ClickEvent>(OnLoginSinBackend);
         if (btnRegistro != null) btnRegistro.RegisterCallback<ClickEvent>(OnRegistroSinBackend);
 
         // TODO BACKEND: comenta las 2 líneas de arriba y descomenta estas:
-        // if (btnLogin    != null) btnLogin.RegisterCallback<ClickEvent>(_ => StartCoroutine(CoroutineLogin()));
+        if (btnLogin    != null) btnLogin.RegisterCallback<ClickEvent>(_ => StartCoroutine(CoroutineLogin()));
         // if (btnRegistro != null) btnRegistro.RegisterCallback<ClickEvent>(_ => StartCoroutine(CoroutineRegistro()));
     }
 
@@ -136,8 +136,12 @@ public class LoginController : MonoBehaviour
         if (btnIrRegistro != null) btnIrRegistro.UnregisterCallback<ClickEvent>(OnIrRegistro);
         if (btnIrLogin    != null) btnIrLogin.UnregisterCallback<ClickEvent>(OnIrLogin);
         if (btnVolver     != null) btnVolver.UnregisterCallback<ClickEvent>(OnVolver);
-        if (btnLogin      != null) btnLogin.UnregisterCallback<ClickEvent>(OnLoginSinBackend);
+        // if (btnLogin      != null) btnLogin.UnregisterCallback<ClickEvent>(OnLoginSinBackend);
         if (btnRegistro   != null) btnRegistro.UnregisterCallback<ClickEvent>(OnRegistroSinBackend);
+
+
+        // if (btnLogin      != null) btnLogin.UnregisterCallback<ClickEvent>(_ => StopCoroutine(CoroutineLogin()));
+        // if (btnRegistro   != null) btnRegistro.UnregisterCallback<ClickEvent>(_ => StartCoroutine(CoroutineRegistro()));
     }
 
     // ================================================================
@@ -182,22 +186,22 @@ public class LoginController : MonoBehaviour
     // Solo valida localmente y va al menú
     // ================================================================
 
-    void OnLoginSinBackend(ClickEvent e)
-    {
-        LimpiarErrores();
-        string alias = campoAliasLogin?.value?.Trim() ?? "";
-        string nip   = campoNipLogin?.value?.Trim() ?? "";
+    // void OnLoginSinBackend(ClickEvent e)
+    // {
+    //     LimpiarErrores();
+    //     string alias = campoAliasLogin?.value?.Trim() ?? "";
+    //     string nip   = campoNipLogin?.value?.Trim() ?? "";
 
-        if (!ValidarAlias(alias, out string eAlias, esLogin: true))
-        { MostrarError(labelErrorLogin, eAlias); MarcarRojo(campoAliasLogin); return; }
+    //     if (!ValidarAlias(alias, out string eAlias, esLogin: true))
+    //     { MostrarError(labelErrorLogin, eAlias); MarcarRojo(campoAliasLogin); return; }
 
-        if (!ValidarNipLogin(nip, out string eNip))
-        { MostrarError(labelErrorLogin, eNip); MarcarRojo(campoNipLogin); return; }
+    //     if (!ValidarNipLogin(nip, out string eNip))
+    //     { MostrarError(labelErrorLogin, eNip); MarcarRojo(campoNipLogin); return; }
 
-        // Validación local OK — sin backend ir directo al menú
-        // TODO BACKEND: quita esta línea cuando uses CoroutineLogin()
-        SceneManager.LoadScene("MenuPrincipal");
-    }
+    //     // Validación local OK — sin backend ir directo al menú
+    //     // TODO BACKEND: quita esta línea cuando uses CoroutineLogin()
+    //     SceneManager.LoadScene("MenuPrincipal");
+    // }
 
     void OnRegistroSinBackend(ClickEvent e)
     {
@@ -333,38 +337,38 @@ public class LoginController : MonoBehaviour
     // Error:   { "error": "Cuenta no encontrada" }
     // ================================================================
 
-    // IEnumerator CoroutineLogin()
-    // {
-    //     LimpiarErrores();
-    //     string alias = campoAliasLogin?.value?.Trim() ?? "";
-    //     string nip   = campoNipLogin?.value?.Trim() ?? "";
-    //
-    //     // Validaciones locales primero
-    //     if (!ValidarAlias(alias, out string eAlias, esLogin: true))
-    //     { MostrarError(labelErrorLogin, eAlias); MarcarRojo(campoAliasLogin); yield break; }
-    //     if (!ValidarNipLogin(nip, out string eNip))
-    //     { MostrarError(labelErrorLogin, eNip); MarcarRojo(campoNipLogin); yield break; }
-    //
-    //     // Llamada al servidor
-    //     string body = $"{{\"alias\":\"{alias}\",\"nip\":{nip}}}";
-    //     using var req = new UnityWebRequest($"{URL_BASE}/login", "POST");
-    //     req.uploadHandler   = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(body));
-    //     req.downloadHandler = new DownloadHandlerBuffer();
-    //     req.SetRequestHeader("Content-Type", "application/json");
-    //     yield return req.SendWebRequest();
-    //
-    //     if (req.result != UnityWebRequest.Result.Success)
-    //     { MostrarError(labelErrorLogin, "Error de conexión. Intenta de nuevo."); yield break; }
-    //
-    //     var resp = JsonUtility.FromJson<RespuestaLogin>(req.downloadHandler.text);
-    //     if (!string.IsNullOrEmpty(resp.error))
-    //     { MostrarError(labelErrorLogin, resp.error); yield break; }
-    //
-    //     // Guardar sesión en GameManager
-    //     GameManager.Instance.IdJugador    = resp.idJugador;
-    //     GameManager.Instance.AliasJugador = resp.alias;
-    //     SceneManager.LoadScene("MenuPrincipal");
-    // }
+    IEnumerator CoroutineLogin()
+    {
+        LimpiarErrores();
+        string alias = campoAliasLogin?.value?.Trim() ?? "";
+        string nip   = campoNipLogin?.value?.Trim() ?? "";
+    
+        // Validaciones locales primero
+        if (!ValidarAlias(alias, out string eAlias, esLogin: true))
+        { MostrarError(labelErrorLogin, eAlias); MarcarRojo(campoAliasLogin); yield break; }
+        if (!ValidarNipLogin(nip, out string eNip))
+        { MostrarError(labelErrorLogin, eNip); MarcarRojo(campoNipLogin); yield break; }
+    
+        // Llamada al servidor
+        string body = $"{{\"alias\":\"{alias}\",\"nip\":{nip}}}";
+        using var req = new UnityWebRequest($"{URL_BASE}/login", "POST");
+        req.uploadHandler   = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(body));
+        req.downloadHandler = new DownloadHandlerBuffer();
+        req.SetRequestHeader("Content-Type", "application/json");
+        yield return req.SendWebRequest();
+    
+        if (req.result != UnityWebRequest.Result.Success)
+        { MostrarError(labelErrorLogin, "Error de conexión. Intenta de nuevo."); yield break; }
+    
+        var resp = JsonUtility.FromJson<RespuestaLogin>(req.downloadHandler.text);
+        if (!string.IsNullOrEmpty(resp.error))
+        { MostrarError(labelErrorLogin, resp.error); yield break; }
+    
+        // Guardar sesión en GameManager
+        GameManager.Instance.IdJugador    = resp.idJugador;
+        GameManager.Instance.AliasJugador = resp.alias;
+        SceneManager.LoadScene("MenuPrincipal");
+    }
 
     // ================================================================
     // TODO BACKEND — REGISTRO (CU-01)
@@ -418,6 +422,6 @@ public class LoginController : MonoBehaviour
     // ================================================================
     // Clases de datos — descomentar junto con las coroutines
     // ================================================================
-    // [System.Serializable] private class RespuestaLogin   { public int idJugador; public string alias; public string error; }
+    [System.Serializable] private class RespuestaLogin   { public int idJugador; public string alias; public string error; }
     // [System.Serializable] private class RespuestaRegistro{ public int idJugador; public string alias; public string error; }
 }
