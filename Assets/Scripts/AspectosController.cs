@@ -24,16 +24,16 @@ public class AspectosController : MonoBehaviour
     private readonly int[] puntajesDesbloqueo = {
         0,    // Skin 1 — siempre desbloqueada
         100,  // Skin 2
-        250,  // Skin 3
-        500,  // Skin 4
-        800,  // Skin 5
-        1200, // Skin 6
-        1700, // Skin 7
-        2300, // Skin 8
-        3000, // Skin 9
-        4000, // Skin 10
-        5500, // Skin 11
-        7000  // Skin 12
+        5000,  // Skin 3
+        10000,  // Skin 4
+        15000,  // Skin 5
+        20000, // Skin 6
+        25000, // Skin 7
+        30000, // Skin 8
+        35000, // Skin 9
+        40000, // Skin 10
+        45000, // Skin 11
+        100000  // Skin 12
     };
 
     private int skinSeleccionadaActual = 0; // índice 0-based

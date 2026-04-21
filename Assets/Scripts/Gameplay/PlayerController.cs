@@ -26,21 +26,14 @@ public class PlayerController : MonoBehaviour
 
     public bool puedeCambiarCarril = true;
 
-    // 🔥 lista de colores (igual que en SkinSelector)
     private Color[] colores = new Color[]
     {
-        Color.red,
-        Color.blue,
-        Color.green,
-        Color.yellow,
-        Color.cyan,
-        Color.magenta,
-        new Color(1f, 0.5f, 0f),   // naranja
-        new Color(0.6f, 0.2f, 1f), // morado
-        new Color(1f, 0.8f, 0.2f), // dorado
-        Color.white,
-        Color.gray,
-        Color.black
+        Color.red, Color.blue, Color.green, Color.yellow,
+        Color.cyan, Color.magenta,
+        new Color(1f, 0.5f, 0f),
+        new Color(0.6f, 0.2f, 1f),
+        new Color(1f, 0.8f, 0.2f),
+        Color.white, Color.gray, Color.black
     };
 
     void Awake()
@@ -79,8 +72,6 @@ public class PlayerController : MonoBehaviour
         xObjetivo = carrilCentro;
 
         numeroDisplay.MostrarNumero(GameManager.Instance.ValorJugador);
-
-        //  aplicar skin guardada
         AplicarSkinGuardada();
     }
 
@@ -120,7 +111,6 @@ public class PlayerController : MonoBehaviour
             numeroDisplay.MostrarNumero(GameManager.Instance.ValorJugador);
 
             puedeCambiarCarril = false;
-
             Destroy(other.gameObject);
         }
 
@@ -131,7 +121,24 @@ public class PlayerController : MonoBehaviour
 
             if (GameManager.Instance.ValorJugador == puerta.numeroMeta)
             {
-                GameManager.Instance.Puntaje += 100 + GameManager.Instance.PuertasVivas * 10;
+                // Puntaje base + bonus por puertas vivas 
+                int multiplicador;
+
+                switch (GameManager.Instance.Dificultad)
+                {
+                    case "medio":
+                        multiplicador = 20;
+                        break;
+                    case "dificil":
+                        multiplicador = 30;
+                        break;
+                    default:
+                        multiplicador = 10;
+                        break;
+                }
+
+                GameManager.Instance.Puntaje += 100 + GameManager.Instance.PuertasVivas * multiplicador;
+
                 GameManager.Instance.PuertasVivas += 1;
                 GameManager.Instance.ValorJugador = puerta.numeroMeta;
                 GameManager.Instance.ValorBase = puerta.numeroMeta;
@@ -161,22 +168,16 @@ public class PlayerController : MonoBehaviour
 
         Color colorElegido = colores[skin];
 
-        // aplicar al personaje
         var renderers = GetComponentsInChildren<SpriteRenderer>();
 
         foreach (var sr in renderers)
         {
             if (sr.material != null)
-            {
                 sr.material.SetColor("_Color", colorElegido);
-            }
         }
 
-        // aplicar a los números correctamente
         if (numeroDisplay != null)
-        {
             numeroDisplay.CambiarColor(colorElegido);
-        }
     }
 
     void IrGameOver()
