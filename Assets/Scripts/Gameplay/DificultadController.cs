@@ -23,20 +23,58 @@ public class DificultadController : MonoBehaviour
         btnDificil    = root.Q<Button>("BtnDificil");
         btnVolver     = root.Q<Button>("BtnVolver");
 
-        // Usamos .clicked en lugar de RegisterCallback para simplicidad
-        if (btnFacil      != null) btnFacil.clicked += () => IniciarJuego("facil");
-        if (btnIntermedio != null) btnIntermedio.clicked += () => IniciarJuego("medio");
-        if (btnDificil    != null) btnDificil.clicked += () => IniciarJuego("dificil");
-        if (btnVolver     != null) btnVolver.clicked += VolverMenu;
+        //  BOTONES CON SONIDO 
+        if (btnFacil != null)
+            btnFacil.clicked += OnFacil;
+
+        if (btnIntermedio != null)
+            btnIntermedio.clicked += OnIntermedio;
+
+        if (btnDificil != null)
+            btnDificil.clicked += OnDificil;
+
+        if (btnVolver != null)
+            btnVolver.clicked += OnVolver;
     }
 
     void OnDisable()
     {
-        // Es vital desuscribirse con el mismo formato
-        if (btnFacil      != null) btnFacil.clicked -= () => IniciarJuego("facil");
-        if (btnIntermedio != null) btnIntermedio.clicked -= () => IniciarJuego("medio");
-        if (btnDificil    != null) btnDificil.clicked -= () => IniciarJuego("dificil");
-        if (btnVolver     != null) btnVolver.clicked -= VolverMenu;
+        if (btnFacil != null)
+            btnFacil.clicked -= OnFacil;
+
+        if (btnIntermedio != null)
+            btnIntermedio.clicked -= OnIntermedio;
+
+        if (btnDificil != null)
+            btnDificil.clicked -= OnDificil;
+
+        if (btnVolver != null)
+            btnVolver.clicked -= OnVolver;
+    }
+
+    //  FUNCIONES CON SONIDO 
+    void OnFacil()
+    {
+        UISoundManager.Instance.PlayClick();
+        IniciarJuego("facil");
+    }
+
+    void OnIntermedio()
+    {
+        UISoundManager.Instance.PlayClick();
+        IniciarJuego("medio");
+    }
+
+    void OnDificil()
+    {
+        UISoundManager.Instance.PlayClick();
+        IniciarJuego("dificil");
+    }
+
+    void OnVolver()
+    {
+        UISoundManager.Instance.PlayClick();
+        VolverMenu();
     }
 
     void IniciarJuego(string dificultad)
@@ -47,7 +85,7 @@ public class DificultadController : MonoBehaviour
         SceneManager.LoadScene("Gameplay");
     }
 
-    void VolverMenu() // Quitamos el ClickEvent evt para que sea compatible con .clicked
+    void VolverMenu()
     {
         SceneManager.LoadScene("MenuPrincipal");
     }

@@ -21,19 +21,22 @@ public class LogrosController : MonoBehaviour
         btnVolver        = root.Q<Button>("BtnVolver");
         contenedorLogros = root.Q<VisualElement>("ContenedorLogros");
 
-        // Buscar o crear el label de "sin datos"
         labelSinDatos = root.Q<Label>("LabelSinDatos");
 
+        //  BOTÓN VOLVER CON SONIDO 
         if (btnVolver != null)
-            btnVolver.RegisterCallback<ClickEvent>(VolverMenu);
+            btnVolver.RegisterCallback<ClickEvent>(e =>
+            {
+                UISoundManager.Instance.PlayClick();
+                VolverMenu(e);
+            });
 
         VerificarPartidas();
     }
 
     void OnDisable()
     {
-        if (btnVolver != null)
-            btnVolver.UnregisterCallback<ClickEvent>(VolverMenu);
+        //  No desregistramos por uso de lambda (no pasa nada en UI Toolkit) 
     }
 
     void VerificarPartidas()
@@ -58,5 +61,8 @@ public class LogrosController : MonoBehaviour
         }
     }
 
-    void VolverMenu(ClickEvent evt) => SceneManager.LoadScene("MenuPrincipal");
+    void VolverMenu(ClickEvent evt)
+    {
+        SceneManager.LoadScene("MenuPrincipal");
+    }
 }

@@ -11,7 +11,7 @@
                     <ui:Label text="PIN" name="LblPinLogin" class="label-form"/>
                 </ui:VisualElement>
                 <ui:VisualElement name="ColumnaInputsLogin" class="columna-inputs" style="flex-grow: 1; height: 563px; position: absolute; top: 192px; left: 162px;">
-                    <ui:TextField label="PIN" placeholder-text="filler text" name="CampoNipLogin" class="input-login" style="position: absolute; top: 413px; left: 635px;"/>
+                    <ui:TextField label="" placeholder-text="*****" name="CampoNipLogin" class="input-login" style="position: absolute; top: 413px; left: 635px;"/>
                     <ui:TextField label="" placeholder-text="filler text" name="CampoAliasLogin" value="" class="input-login" style="position: absolute; top: 315px; left: 638px;"/>
                 </ui:VisualElement>
             </ui:VisualElement>
@@ -31,16 +31,16 @@
                     <ui:Label text="Confirmar NIP*" name="LblPinRegistro" class="label-form"/>
                 </ui:VisualElement>
                 <ui:VisualElement name="ColumnaInputsRegistro" class="columna-inputs" style="flex-grow: 1; position: absolute; top: 264px; left: 110px;">
-                    <ui:TextField label="Text Field" placeholder-text="******" name="CampoAliasRegistro" class="input-login"/>
-                    <ui:TextField label="Text Field" placeholder-text="Año de Nacimiento" name="CampoCorreoRegistro" class="input-login"/>
-                    <ui:TextField label="Text Field" placeholder-text="email" name="CampoAnioRegistro" class="input-login"/>
+                    <ui:TextField label="" placeholder-text="filler text" name="CampoAliasRegistro" class="input-login"/>
+                    <ui:TextField label="" placeholder-text="@gmail.com" name="CampoCorreoRegistro" class="input-login"/>
+                    <ui:TextField label="" placeholder-text="" name="CampoAnioRegistro" class="input-login"/>
                     <ui:Label text="0" name="LabelNipGenerado" style="font-size: 30px; -unity-font-style: bold; background-color: rgb(255, 255, 255); width: 252px;"/>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:Label text="Regístrate con la ayuda de tu madre, padre o tutor(a)&#10;correspondiente, o sigue las instrucciones que se te&#10;indiquen para realizarlo." name="AvisoRegistro" class="aviso-registro" style="bottom: 76px; left: 996px; -unity-text-align: upper-center;"/>
             <ui:Label text="¿Ya tienes cuenta...?" name="TextoIrLogin" class="texto-secundario-derecha" style="bottom: 180px; right: 113px;"/>
             <ui:Image style="background-image: url(&quot;project://database/Assets/Sprites/ERESCERO%20(2).png?fileID=2800000&amp;guid=39b023ac0e784aa449960325f92b13e1&amp;type=3#ERESCERO (2)&quot;); height: 112px; width: 458px; position: absolute; top: 96px; left: 906px;"/>
-            <ui:Button text="" name="BtnRegistro" class="boton-principal-login boton" style="position: absolute; top: 664px; left: 789px; background-image: url(&quot;project://database/Assets/Sprites/registro.png?fileID=2800000&amp;guid=6110c19bb08f8ea47ba3ba062bfb9fe1&amp;type=3#registro&quot;); background-color: rgba(240, 240, 240, 0); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); height: 124px; width: 346px;"/>
+            <ui:Button text="" name="BtnRegistro" class="boton-principal-login boton" style="position: absolute; top: 677px; left: 789px; background-image: url(&quot;project://database/Assets/Sprites/registro.png?fileID=2800000&amp;guid=6110c19bb08f8ea47ba3ba062bfb9fe1&amp;type=3#registro&quot;); background-color: rgba(240, 240, 240, 0); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); height: 111px; width: 346px;"/>
             <ui:Button text="" name="BtnIrLogin" class="boton-secundario-derecha boton" style="border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); background-image: url(&quot;project://database/Assets/Sprites/iniciarsesion.png?fileID=2800000&amp;guid=d940263cd608bcf458adcce6a6abb754&amp;type=3#iniciarsesion&quot;); background-color: rgba(240, 240, 240, 0); height: 100px; width: 407px; bottom: 84px; right: 60px;"/>
             <ui:Label text="Regístrate" name="SubtituloRegistro" class="subtitulo-registro" style="position: absolute; top: 200px; left: 829px;"/>
         </ui:VisualElement>

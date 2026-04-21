@@ -25,34 +25,58 @@ public class MenuController : MonoBehaviour
         iconoTrofeo  = root.Q<VisualElement>("IconoTrofeo");
         iconoUsuario = root.Q<VisualElement>("IconoUsuario");
 
-        if (btnJugar    != null) btnJugar.RegisterCallback<ClickEvent>(IrAJugar);
-        if (btnRankings != null) btnRankings.RegisterCallback<ClickEvent>(IrARankings);
-        if (btnAspectos != null) btnAspectos.RegisterCallback<ClickEvent>(IrAAspectos);
-        if (iconoTrofeo  != null) iconoTrofeo.RegisterCallback<ClickEvent>(IrALogros);
-        if (iconoUsuario != null) iconoUsuario.RegisterCallback<ClickEvent>(IrALogin);
+        //  agregamos sonido
+        if (btnJugar != null)
+            btnJugar.RegisterCallback<ClickEvent>(e =>
+            {
+                UISoundManager.Instance.PlayClick();
+                IrAJugar(e);
+            });
+
+        if (btnRankings != null)
+            btnRankings.RegisterCallback<ClickEvent>(e =>
+            {
+                UISoundManager.Instance.PlayClick();
+                IrARankings(e);
+            });
+
+        if (btnAspectos != null)
+            btnAspectos.RegisterCallback<ClickEvent>(e =>
+            {
+                UISoundManager.Instance.PlayClick();
+                IrAAspectos(e);
+            });
+
+        if (iconoTrofeo != null)
+            iconoTrofeo.RegisterCallback<ClickEvent>(e =>
+            {
+                UISoundManager.Instance.PlayClick();
+                IrALogros(e);
+            });
+
+        if (iconoUsuario != null)
+            iconoUsuario.RegisterCallback<ClickEvent>(e =>
+            {
+                UISoundManager.Instance.PlayClick();
+                IrALogin(e);
+            });
     }
 
     void OnDisable()
     {
-        if (btnJugar    != null) btnJugar.UnregisterCallback<ClickEvent>(IrAJugar);
-        if (btnRankings != null) btnRankings.UnregisterCallback<ClickEvent>(IrARankings);
-        if (btnAspectos != null) btnAspectos.UnregisterCallback<ClickEvent>(IrAAspectos);
-        if (iconoTrofeo  != null) iconoTrofeo.UnregisterCallback<ClickEvent>(IrALogros);
-        if (iconoUsuario != null) iconoUsuario.UnregisterCallback<ClickEvent>(IrALogin);
+        //  Estos no se pueden quitar fácilmente porque usamos lambdas 
     }
 
     void IrAJugar(ClickEvent evt)
     {
         if (GameManager.Instance != null && GameManager.Instance.EsPrimeraPartida)
         {
-            // Primera vez — tutorial en fácil, sin pasar por Dificultad
             GameManager.Instance.EsTutorial = true;
             GameManager.Instance.IniciarPartida("facil");
             SceneManager.LoadScene("Gameplay");
         }
         else
         {
-            // Ya jugó antes — flujo normal
             GameManager.Instance.EsTutorial = false;
             SceneManager.LoadScene("Dificultad");
         }

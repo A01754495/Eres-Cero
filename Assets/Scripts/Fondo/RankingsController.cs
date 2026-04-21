@@ -49,10 +49,34 @@ public class RankingsController : MonoBehaviour
         if (panelSemanal   != null) panelSemanal.style.display   = DisplayStyle.Flex;
         if (panelHistorico != null) panelHistorico.style.display = DisplayStyle.None;
 
-        if (btnVerHistorico    != null) btnVerHistorico.RegisterCallback<ClickEvent>(MostrarHistorico);
-        if (btnVerSemanal      != null) btnVerSemanal.RegisterCallback<ClickEvent>(MostrarSemanal);
-        if (btnVolverHistorico != null) btnVolverHistorico.RegisterCallback<ClickEvent>(VolverMenu);
-        if (btnVolverSemanal   != null) btnVolverSemanal.RegisterCallback<ClickEvent>(VolverMenu);
+        //  BOTONES CON SONIDO
+        if (btnVerHistorico != null)
+            btnVerHistorico.RegisterCallback<ClickEvent>(e =>
+            {
+                UISoundManager.Instance.PlayClick();
+                MostrarHistorico(e);
+            });
+
+        if (btnVerSemanal != null)
+            btnVerSemanal.RegisterCallback<ClickEvent>(e =>
+            {
+                UISoundManager.Instance.PlayClick();
+                MostrarSemanal(e);
+            });
+
+        if (btnVolverHistorico != null)
+            btnVolverHistorico.RegisterCallback<ClickEvent>(e =>
+            {
+                UISoundManager.Instance.PlayClick();
+                VolverMenu(e);
+            });
+
+        if (btnVolverSemanal != null)
+            btnVolverSemanal.RegisterCallback<ClickEvent>(e =>
+            {
+                UISoundManager.Instance.PlayClick();
+                VolverMenu(e);
+            });
 
         StartCoroutine(CargarRanking("semanal"));
         StartCoroutine(CargarRanking("historico"));
@@ -60,10 +84,7 @@ public class RankingsController : MonoBehaviour
 
     void OnDisable()
     {
-        if (btnVerHistorico    != null) btnVerHistorico.UnregisterCallback<ClickEvent>(MostrarHistorico);
-        if (btnVerSemanal      != null) btnVerSemanal.UnregisterCallback<ClickEvent>(MostrarSemanal);
-        if (btnVolverHistorico != null) btnVolverHistorico.UnregisterCallback<ClickEvent>(VolverMenu);
-        if (btnVolverSemanal   != null) btnVolverSemanal.UnregisterCallback<ClickEvent>(VolverMenu);
+        //  No desregistramos por uso de lambda (no pasa nada)
     }
 
     IEnumerator CargarRanking(string tipo)

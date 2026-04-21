@@ -29,21 +29,35 @@ public class PerfilController : MonoBehaviour
                 labelUsuario.text = "Nombre de usuario: Invitado";
         }
 
-        if (btnVolver       != null) btnVolver.RegisterCallback<ClickEvent>(VolverMenu);
-        if (btnCerrarSesion != null) btnCerrarSesion.RegisterCallback<ClickEvent>(CerrarSesion);
+        //  BOTÓN VOLVER CON SONIDO 
+        if (btnVolver != null)
+            btnVolver.RegisterCallback<ClickEvent>(e =>
+            {
+                UISoundManager.Instance.PlayClick();
+                VolverMenu(e);
+            });
+
+        //  BOTÓN CERRAR SESIÓN CON SONIDO 
+        if (btnCerrarSesion != null)
+            btnCerrarSesion.RegisterCallback<ClickEvent>(e =>
+            {
+                UISoundManager.Instance.PlayClick();
+                CerrarSesion(e);
+            });
     }
 
     void OnDisable()
     {
-        if (btnVolver       != null) btnVolver.UnregisterCallback<ClickEvent>(VolverMenu);
-        if (btnCerrarSesion != null) btnCerrarSesion.UnregisterCallback<ClickEvent>(CerrarSesion);
+        //  No se desregistran porque usamos lambdas 
     }
 
-    void VolverMenu(ClickEvent evt) => SceneManager.LoadScene("MenuPrincipal");
+    void VolverMenu(ClickEvent evt)
+    {
+        SceneManager.LoadScene("MenuPrincipal");
+    }
 
     void CerrarSesion(ClickEvent evt)
     {
-        // Limpiar sesión del GameManager
         if (GameManager.Instance != null)
             GameManager.Instance.CerrarSesion();
 
