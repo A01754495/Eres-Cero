@@ -5,20 +5,20 @@
             <ui:Label text="Label" name="LabelErrorLogin" style="display: none;"/>
             <ui:Label text="Bienvenido a" name="TituloSuperiorLogin" class="titulo-superior" style="-unity-font-style: bold; position: absolute; top: 220px; left: 450px;"/>
             <ui:Label text="Inicia sesión" name="SubtituloLogin" class="subtitulo-login" style="position: absolute; top: 338px; left: 820px;"/>
-            <ui:VisualElement name="FormularioLogin" class="formulario-login" style="flex-grow: 1; width: 1197px; position: absolute; height: 717px; top: 3px; left: 354px;">
-                <ui:VisualElement name="ColumnaLabelsLogin" class="columna-labels" style="flex-grow: 1; position: absolute; top: 481px; left: 173px;">
-                    <ui:Label text="Nombre de usuario:" name="LblUsuarioLogin" class="label-form"/>
-                    <ui:Label text="PIN" name="LblPinLogin" class="label-form"/>
-                </ui:VisualElement>
-                <ui:VisualElement name="ColumnaInputsLogin" class="columna-inputs" style="flex-grow: 1; height: 563px; position: absolute; top: 192px; left: 162px;">
-                    <ui:TextField label="" placeholder-text="*****" name="CampoNipLogin" class="input-login" style="position: absolute; top: 413px; left: 635px;"/>
-                    <ui:TextField label="" placeholder-text="filler text" name="CampoAliasLogin" value="" class="input-login" style="position: absolute; top: 315px; left: 638px;"/>
-                </ui:VisualElement>
-            </ui:VisualElement>
             <ui:Image style="background-image: url(&quot;project://database/Assets/Sprites/ERESCERO%20(2).png?fileID=2800000&amp;guid=39b023ac0e784aa449960325f92b13e1&amp;type=3#ERESCERO (2)&quot;); height: 142px; width: 617px; position: absolute; top: 192px; left: 900px;"/>
             <ui:Button text="" name="BtnLogin" class="boton-principal-login boton" style="position: absolute; top: 685px; left: 719px; background-image: url(&quot;project://database/Assets/Sprites/iniciarsesion.png?fileID=2800000&amp;guid=d940263cd608bcf458adcce6a6abb754&amp;type=3#iniciarsesion&quot;); -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgba(240, 240, 240, 0); width: 471px; border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); height: 107px;"/>
             <ui:Label text="¿No tienes cuenta aún...?" name="TextoIrRegistro" class="texto-secundario-derecha" style="bottom: 192px; right: 95px;"/>
             <ui:Button text="" name="BtnIrRegistro" class="boton-secundario-derecha boton" style="background-image: url(&quot;project://database/Assets/Sprites/registro.png?fileID=2800000&amp;guid=6110c19bb08f8ea47ba3ba062bfb9fe1&amp;type=3#registro&quot;); -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgba(240, 240, 240, 0); height: 112px; width: 317px; bottom: 80px; right: 81px; border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0);"/>
+            <ui:VisualElement name="FormularioLogin" class="formulario-login" style="flex-grow: 1; width: 1197px; position: absolute; height: 717px; top: 9px; left: 354px;">
+                <ui:VisualElement name="ColumnaLabelsLogin" class="columna-labels" style="flex-grow: 1; position: absolute; top: 481px; left: 173px;">
+                    <ui:Label text="Nombre de usuario" name="LblUsuarioLogin" class="label-form" style="position: absolute; top: 8px; left: 90px;"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="ColumnaInputsLogin" class="columna-inputs" style="flex-grow: 1; height: 563px; position: absolute; top: 192px; left: 162px;">
+                    <ui:TextField label="" placeholder-text="" name="CampoNipLogin" class="input-login" style="position: absolute; top: 413px; left: 505px;"/>
+                    <ui:Label text="PIN" name="LblPinLogin" class="label-form" style="width: 106px; position: absolute; top: 412px; left: 298px;"/>
+                </ui:VisualElement>
+                <ui:TextField label="" placeholder-text="" name="CampoAliasLogin" value="" class="input-login" style="position: absolute; top: 495px; left: 670px;"/>
+            </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="PanelRegistro" class="panel-registro" style="flex-grow: 1; display: flex; -unity-background-image-tint-color: rgb(255, 255, 255);">
             <ui:Label text="Label" name="LabelErrorRegistro" style="display: none;"/>
@@ -31,8 +31,8 @@
                     <ui:Label text="Confirmar NIP*" name="LblPinRegistro" class="label-form"/>
                 </ui:VisualElement>
                 <ui:VisualElement name="ColumnaInputsRegistro" class="columna-inputs" style="flex-grow: 1; position: absolute; top: 264px; left: 110px;">
-                    <ui:TextField label="" placeholder-text="filler text" name="CampoAliasRegistro" class="input-login"/>
-                    <ui:TextField label="" placeholder-text="@gmail.com" name="CampoCorreoRegistro" class="input-login"/>
+                    <ui:TextField label="" placeholder-text="" name="CampoAliasRegistro" class="input-login"/>
+                    <ui:TextField label="" placeholder-text="" name="CampoCorreoRegistro" class="input-login"/>
                     <ui:TextField label="" placeholder-text="" name="CampoAnioRegistro" class="input-login"/>
                     <ui:Label text="0" name="LabelNipGenerado" style="font-size: 30px; -unity-font-style: bold; background-color: rgb(255, 255, 255); width: 252px;"/>
                 </ui:VisualElement>

@@ -117,60 +117,25 @@ public class LoginController : MonoBehaviour
         LimpiarErrores();
         GenerarNuevoNip();
 
-        if (btnIrRegistro != null)
-    btnIrRegistro.RegisterCallback<ClickEvent>(e =>
-    {
-        UISoundManager.Instance.PlayClick();
-        OnIrRegistro(e);
-    });
-
-    if (btnIrLogin != null)
-        btnIrLogin.RegisterCallback<ClickEvent>(e =>
-        {
-            UISoundManager.Instance.PlayClick();
-            OnIrLogin(e);
-        });
-
-    if (btnVolver != null)
-        btnVolver.RegisterCallback<ClickEvent>(e =>
-        {
-            UISoundManager.Instance.PlayClick();
-            OnVolver(e);
-        });
-
-    if (btnRegistro != null)
-        btnRegistro.RegisterCallback<ClickEvent>(e =>
-        {
-            UISoundManager.Instance.PlayClick();
-            StartCoroutine(CoroutineRegistro());
-        });
-
-    if (btnLogin != null)
-        btnLogin.RegisterCallback<ClickEvent>(e =>
-        {
-            UISoundManager.Instance.PlayClick();
-            StartCoroutine(CoroutineLogin());
-        });
-
         // Callbacks navegación
-        //if (btnIrRegistro != null) btnIrRegistro.RegisterCallback<ClickEvent>(OnIrRegistro);
-        //if (btnIrLogin    != null) btnIrLogin.RegisterCallback<ClickEvent>(OnIrLogin);
-        //if (btnVolver     != null) btnVolver.RegisterCallback<ClickEvent>(OnVolver);
+        if (btnIrRegistro != null) btnIrRegistro.RegisterCallback<ClickEvent>(OnIrRegistro);
+        if (btnIrLogin    != null) btnIrLogin.RegisterCallback<ClickEvent>(OnIrLogin);
+        if (btnVolver     != null) btnVolver.RegisterCallback<ClickEvent>(OnVolver);
 
         // ── SIN BACKEND: validación local + ir al menú ──────────────
         // if (btnLogin    != null) btnLogin.RegisterCallback<ClickEvent>(OnLoginSinBackend);
-        // if (btnRegistro != null) btnRegistro.RegisterCallback<ClickEvent>(_ => StartCoroutine(CoroutineRegistro()));
+        if (btnRegistro != null) btnRegistro.RegisterCallback<ClickEvent>(_ => StartCoroutine(CoroutineRegistro()));
 
         // TODO BACKEND: comenta las 2 líneas de arriba y descomenta estas:
-        //if (btnLogin    != null) btnLogin.RegisterCallback<ClickEvent>(_ => StartCoroutine(CoroutineLogin()));
+        if (btnLogin    != null) btnLogin.RegisterCallback<ClickEvent>(_ => StartCoroutine(CoroutineLogin()));
         // if (btnRegistro != null) btnRegistro.RegisterCallback<ClickEvent>(_ => StartCoroutine(CoroutineRegistro()));
     }
 
     void OnDisable()
     {
-        //if (btnIrRegistro != null) btnIrRegistro.UnregisterCallback<ClickEvent>(OnIrRegistro);
-        //if (btnIrLogin    != null) btnIrLogin.UnregisterCallback<ClickEvent>(OnIrLogin);
-        //if (btnVolver     != null) btnVolver.UnregisterCallback<ClickEvent>(OnVolver);
+        if (btnIrRegistro != null) btnIrRegistro.UnregisterCallback<ClickEvent>(OnIrRegistro);
+        if (btnIrLogin    != null) btnIrLogin.UnregisterCallback<ClickEvent>(OnIrLogin);
+        if (btnVolver     != null) btnVolver.UnregisterCallback<ClickEvent>(OnVolver);
         // if (btnLogin      != null) btnLogin.UnregisterCallback<ClickEvent>(OnLoginSinBackend);
         // if (btnRegistro   != null) btnRegistro.UnregisterCallback<ClickEvent>(OnRegistroSinBackend);
 
