@@ -51,14 +51,26 @@ public class GameOverController : MonoBehaviour
             //     StartCoroutine(GuardarPartida());
         }
 
-        if (btnReintentar != null) btnReintentar.RegisterCallback<ClickEvent>(OnReintentar);
-        if (btnMenu       != null) btnMenu.RegisterCallback<ClickEvent>(OnMenu);
+            if (btnReintentar != null)
+                btnReintentar.RegisterCallback<ClickEvent>(e =>
+                {
+                    UISoundManager.Instance.PlayClick(); //  sonido
+                    OnReintentar(e);                     // acción 
+                });
+
+            if (btnMenu != null)
+                btnMenu.RegisterCallback<ClickEvent>(e =>
+                {
+                    UISoundManager.Instance.PlayClick(); //  sonido
+                    OnMenu(e);                           // acción 
+                });
     }
 
     void OnDisable()
     {
-        if (btnReintentar != null) btnReintentar.UnregisterCallback<ClickEvent>(OnReintentar);
-        if (btnMenu       != null) btnMenu.UnregisterCallback<ClickEvent>(OnMenu);
+        //  No desregistramos callbacks porque usamos lambdas
+        //if (btnReintentar != null) btnReintentar.UnregisterCallback<ClickEvent>(OnReintentar);
+        //if (btnMenu       != null) btnMenu.UnregisterCallback<ClickEvent>(OnMenu);
     }
 
     void OnReintentar(ClickEvent e)
