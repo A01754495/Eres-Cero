@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
 
     public NumeroDisplay numeroDisplay;
 
+    //  AUDIO
+    private PlayerAudio playerAudio;
+
     private int carrilActual = 1;
     private float xObjetivo;
     private bool puedeMover = true;
@@ -71,6 +74,9 @@ public class PlayerController : MonoBehaviour
         carrilActual = 1;
         xObjetivo = carrilCentro;
 
+        //  obtener referencia al audio
+        playerAudio = GetComponent<PlayerAudio>();
+
         numeroDisplay.MostrarNumero(GameManager.Instance.ValorJugador);
         AplicarSkinGuardada();
     }
@@ -78,7 +84,18 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (!puedeMover) return;
+
         MoverHaciaCarril();
+
+        //  sonido de movimiento
+        if (Mathf.Abs(transform.position.x - xObjetivo) > 0.01f)
+        {
+            playerAudio.ReproducirMovimiento(true);
+        }
+        else
+        {
+            playerAudio.ReproducirMovimiento(false);
+        }
     }
 
     void CambiarCarril(int direccion)
@@ -121,7 +138,6 @@ public class PlayerController : MonoBehaviour
 
             if (GameManager.Instance.ValorJugador == puerta.numeroMeta)
             {
-                // Puntaje base + bonus por puertas vivas 
                 int multiplicador;
 
                 switch (GameManager.Instance.Dificultad)
@@ -139,6 +155,9 @@ public class PlayerController : MonoBehaviour
 
                 GameManager.Instance.Puntaje += 100 + GameManager.Instance.PuertasVivas * multiplicador;
 
+                //  sonido de puntos
+                playerAudio.ReproducirPuntos();
+
                 GameManager.Instance.PuertasVivas += 1;
                 GameManager.Instance.ValorJugador = puerta.numeroMeta;
                 GameManager.Instance.ValorBase = puerta.numeroMeta;
@@ -154,6 +173,10 @@ public class PlayerController : MonoBehaviour
             {
                 puedeMover = false;
                 puerta.MostrarError();
+
+                //  sonido de perder
+                playerAudio.ReproducirPerder();
+
                 Invoke(nameof(IrGameOver), 0.8f);
             }
         }
