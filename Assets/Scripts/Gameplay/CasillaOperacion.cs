@@ -15,6 +15,16 @@ public class CasillaOperacion : MonoBehaviour
     // El Spawner llama esto justo después de instanciar
     public void Configurar(string op, int num)
     {
+        if(op == "*")
+        {
+            op = "x";
+        }
+
+        if(op == "/")
+        {
+            op = "÷";
+        }
+        
         operador = op;
         numero   = num;
 
