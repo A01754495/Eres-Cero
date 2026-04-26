@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections;
 
@@ -14,8 +15,8 @@ public class PlayerController : MonoBehaviour
     public float velocidadMovimiento = 12f;
 
     [Header("Dash — adelantar con espacio")]
-    public float multiplicadorDash = 4f;   // cuántas veces más rápido baja todo
-    public float duracionDash      = 1.2f; // segundos que dura el efecto
+    public float multiplicadorDash = 4f;
+    public float duracionDash      = 1.2f;
 
     [Header("UI: texto que muestra el valor del jugador")]
     public TextMeshPro textoValor;
@@ -34,9 +35,11 @@ public class PlayerController : MonoBehaviour
 
     public bool puedeCambiarCarril = true;
 
-    // Estado del dash
-    private bool  dashActivo   = false;
-    private float timerDash    = 0f;
+    private bool  dashActivo = false;
+    private float timerDash  = 0f;
+
+    // Para evitar doble trigger en la puerta
+    private bool perdiendo = false;
 
     private Color[] colores = new Color[]
     {
@@ -58,7 +61,6 @@ public class PlayerController : MonoBehaviour
         moverDerecha.AddBinding("<Keyboard>/rightArrow");
         moverDerecha.AddBinding("<Keyboard>/d");
 
-        // Tecla espacio para el dash
         accionDash = new InputAction(type: InputActionType.Button);
         accionDash.AddBinding("<Keyboard>/space");
     }
@@ -90,7 +92,6 @@ public class PlayerController : MonoBehaviour
 
     void OnDash(InputAction.CallbackContext ctx)
     {
-        // Solo si no hay dash activo y el jugador puede moverse
         if (!puedeMover || dashActivo) return;
         StartCoroutine(EjecutarDash());
     }
@@ -100,19 +101,16 @@ public class PlayerController : MonoBehaviour
         dashActivo = true;
         timerDash  = duracionDash;
 
-        // Aplicar multiplicador al LaneSpawner
         LaneSpawner spawner = FindFirstObjectByType<LaneSpawner>();
         if (spawner != null)
             spawner.multiplicadorVelocidad = multiplicadorDash;
 
-        // Esperar la duración del dash
         while (timerDash > 0f)
         {
             timerDash -= Time.deltaTime;
             yield return null;
         }
 
-        // Restaurar velocidad normal
         if (spawner != null)
             spawner.multiplicadorVelocidad = 1f;
 
@@ -160,12 +158,19 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        // ── CASILLA DE OPERACIÓN ──
         if (other.CompareTag("Operacion"))
         {
-            if (!puedeMover) return;
+            if (!puedeMover || perdiendo) return;
 
             CasillaOperacion casilla = other.GetComponent<CasillaOperacion>();
             if (casilla == null) return;
+
+            // Guardar datos para retroalimentación
+            GameManager.Instance.UltimoValorBase = GameManager.Instance.ValorJugador;
+            GameManager.Instance.UltimoOperador  = casilla.operador;
+            GameManager.Instance.UltimoNumero    = casilla.numero;
+            GameManager.Instance.UltimoResultado = casilla.resultadoFinal;
 
             GameManager.Instance.ValorJugador = casilla.resultadoFinal;
             numeroDisplay.MostrarNumero(GameManager.Instance.ValorJugador);
@@ -174,8 +179,11 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
 
+        // ── PUERTA ──
         if (other.CompareTag("Puerta"))
         {
+            if (perdiendo) return; // evitar doble trigger
+
             PuertaController puerta = other.GetComponent<PuertaController>();
             if (puerta == null) return;
 
@@ -195,14 +203,13 @@ public class PlayerController : MonoBehaviour
 
                 GameManager.Instance.PuertasVivas += 1;
                 GameManager.Instance.ValorJugador  = puerta.numeroMeta;
-                GameManager.Instance.ValorBase      = puerta.numeroMeta;
+                GameManager.Instance.ValorBase     = puerta.numeroMeta;
 
                 puerta.MostrarExito();
                 numeroDisplay.MostrarNumero(GameManager.Instance.ValorJugador);
 
                 puedeCambiarCarril = true;
 
-                // Si el dash estaba activo al cruzar la puerta, cancelarlo
                 if (dashActivo)
                 {
                     StopAllCoroutines();
@@ -215,12 +222,23 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                perdiendo  = true;
                 puedeMover = false;
                 puerta.MostrarError();
+
+                // Guardar meta fallida para retroalimentación
+                GameManager.Instance.MetaFallida = puerta.numeroMeta;
+
                 playerAudio.ReproducirPerder();
-                Invoke(nameof(IrGameOver), 0.8f);
+                StartCoroutine(IrRetroalimentacion());
             }
         }
+    }
+
+    IEnumerator IrRetroalimentacion()
+    {
+        yield return new WaitForSeconds(0.8f);
+        SceneManager.LoadScene("Retroalimentacion");
     }
 
     void AplicarSkinGuardada()
@@ -236,10 +254,5 @@ public class PlayerController : MonoBehaviour
 
         if (numeroDisplay != null)
             numeroDisplay.CambiarColor(colorElegido);
-    }
-
-    void IrGameOver()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
     }
 }

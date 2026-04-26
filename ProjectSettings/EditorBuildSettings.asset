@@ -35,6 +35,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Perfil.unity
     guid: ce26ab7b21484304182c06882950950c
+  - enabled: 1
+    path: Assets/Scenes/Retroalimentacion.unity
+    guid: 357e23daea994b54fa679eeab46f9e77
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

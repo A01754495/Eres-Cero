@@ -5,7 +5,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     // --- Sesión del jugador ---
-    // TODO BACKEND: Llenar al hacer login/registro exitoso
     public int    IdJugador      { get; set; } = -1;
     public string AliasJugador   { get; set; } = "";
     public bool   HaySesion      => IdJugador > 0;
@@ -28,6 +27,13 @@ public class GameManager : MonoBehaviour
     public float IncrementoVel   { get; private set; } = 0.15f;
     public int   RangoOperacion  { get; private set; } = 5;
 
+    // --- Retroalimentación al perder ---
+    public int    UltimoValorBase  { get; set; } = 0;
+    public string UltimoOperador   { get; set; } = "";
+    public int    UltimoNumero     { get; set; } = 0;
+    public int    UltimoResultado  { get; set; } = 0;
+    public int    MetaFallida      { get; set; } = 0;
+
     // --- Tutorial ---
     public bool EsTutorial       { get; set; } = false;
     public bool EsPrimeraPartida => PlayerPrefs.GetInt("HaJugado", 0) == 0;
@@ -43,8 +49,6 @@ public class GameManager : MonoBehaviour
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
-        // Cargar skin guardada
         SkinSeleccionada = PlayerPrefs.GetInt("SkinSeleccionada", 0);
     }
 
@@ -56,6 +60,13 @@ public class GameManager : MonoBehaviour
         Puntaje       = 0;
         PuertasVivas  = 0;
         TiempoPartida = 0f;
+
+        // Resetear retroalimentación
+        UltimoValorBase = 0;
+        UltimoOperador  = "";
+        UltimoNumero    = 0;
+        UltimoResultado = 0;
+        MetaFallida     = 0;
 
         switch (dificultad)
         {
@@ -81,7 +92,6 @@ public class GameManager : MonoBehaviour
 
     public void ActualizarTiempo() => TiempoPartida += Time.deltaTime;
 
-    // Acumula el puntaje de la partida al histórico local (para desbloqueo de aspectos)
     public void AcumularPuntaje()
     {
         int total = PlayerPrefs.GetInt("PuntajeTotal", 0) + Puntaje;
