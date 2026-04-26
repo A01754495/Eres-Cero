@@ -50,10 +50,10 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         SkinSeleccionada = PlayerPrefs.GetInt("SkinSeleccionada", 0);
-        CargarSesionGuardada(); // ← NUEVO: carga sesión del disco si existe
+        CargarSesionGuardada();
     }
 
-    // ── Guarda la sesión en disco para que persista entre aperturas
+    // ── Sesión persistente ──────────────────────────────────────────
     public void GuardarSesion()
     {
         PlayerPrefs.SetInt("SesionIdJugador", IdJugador);
@@ -61,7 +61,6 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    // ── Carga la sesión guardada al arrancar
     void CargarSesionGuardada()
     {
         int idGuardado = PlayerPrefs.GetInt("SesionIdJugador", -1);
@@ -72,11 +71,48 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // ── Borra la sesión del disco (se llama al cerrar sesión)
     void BorrarSesionGuardada()
     {
         PlayerPrefs.DeleteKey("SesionIdJugador");
         PlayerPrefs.DeleteKey("SesionAlias");
+        PlayerPrefs.Save();
+    }
+
+    // ── Estadísticas para logros ────────────────────────────────────
+    // Llámalo en GameOverController junto a AcumularPuntaje()
+    public void GuardarEstadisticasLogros()
+    {
+        // Logro1: puertas en difícil en UNA sola partida
+        if (Dificultad == "dificil")
+        {
+            int mejorPuertasDificil = PlayerPrefs.GetInt("MejorPuertasDificil", 0);
+            if (PuertasVivas > mejorPuertasDificil)
+                PlayerPrefs.SetInt("MejorPuertasDificil", PuertasVivas);
+        }
+
+        // Logro3: mejor puntaje en una sola sesión
+        int mejorPuntaje = PlayerPrefs.GetInt("MejorPuntaje", 0);
+        if (Puntaje > mejorPuntaje)
+            PlayerPrefs.SetInt("MejorPuntaje", Puntaje);
+
+        // Logro4: mejor tiempo en una sola partida (en segundos)
+        float mejorTiempo = PlayerPrefs.GetFloat("MejorTiempo", 0f);
+        if (TiempoPartida > mejorTiempo)
+            PlayerPrefs.SetFloat("MejorTiempo", TiempoPartida);
+
+        // Logro6: puntaje total acumulado (ya lo hace AcumularPuntaje, solo lo leemos)
+
+        PlayerPrefs.Save();
+    }
+
+    // Llámalo en AspectosController cuando el jugador desbloquea una skin
+    public void RegistrarSkinsDesbloqueadas(int[] puntajesDesbloqueo)
+    {
+        int puntajeTotal = PlayerPrefs.GetInt("PuntajeTotal", 0);
+        int count = 0;
+        foreach (int req in puntajesDesbloqueo)
+            if (puntajeTotal >= req) count++;
+        PlayerPrefs.SetInt("SkinsDesbloqueadas", count);
         PlayerPrefs.Save();
     }
 
@@ -89,7 +125,6 @@ public class GameManager : MonoBehaviour
         PuertasVivas  = 0;
         TiempoPartida = 0f;
 
-        // Resetear retroalimentación
         UltimoValorBase = 0;
         UltimoOperador  = "";
         UltimoNumero    = 0;
@@ -131,6 +166,6 @@ public class GameManager : MonoBehaviour
     {
         IdJugador    = -1;
         AliasJugador = "";
-        BorrarSesionGuardada(); // ← NUEVO: borra del disco
+        BorrarSesionGuardada();
     }
 }
