@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,22 +13,30 @@ public class PlayerController : MonoBehaviour
     [Header("Velocidad de transición entre carriles")]
     public float velocidadMovimiento = 12f;
 
+    [Header("Dash — adelantar con espacio")]
+    public float multiplicadorDash = 4f;   // cuántas veces más rápido baja todo
+    public float duracionDash      = 1.2f; // segundos que dura el efecto
+
     [Header("UI: texto que muestra el valor del jugador")]
     public TextMeshPro textoValor;
-
     public NumeroDisplay numeroDisplay;
 
-    //  AUDIO
+    // AUDIO
     private PlayerAudio playerAudio;
 
-    private int carrilActual = 1;
+    private int   carrilActual = 1;
     private float xObjetivo;
-    private bool puedeMover = true;
+    private bool  puedeMover = true;
 
     private InputAction moverIzquierda;
     private InputAction moverDerecha;
+    private InputAction accionDash;
 
     public bool puedeCambiarCarril = true;
+
+    // Estado del dash
+    private bool  dashActivo   = false;
+    private float timerDash    = 0f;
 
     private Color[] colores = new Color[]
     {
@@ -48,33 +57,73 @@ public class PlayerController : MonoBehaviour
         moverDerecha = new InputAction(type: InputActionType.Button);
         moverDerecha.AddBinding("<Keyboard>/rightArrow");
         moverDerecha.AddBinding("<Keyboard>/d");
+
+        // Tecla espacio para el dash
+        accionDash = new InputAction(type: InputActionType.Button);
+        accionDash.AddBinding("<Keyboard>/space");
     }
 
     void OnEnable()
     {
         moverIzquierda.Enable();
         moverDerecha.Enable();
+        accionDash.Enable();
+
         moverIzquierda.performed += OnMoverIzquierda;
-        moverDerecha.performed += OnMoverDerecha;
+        moverDerecha.performed   += OnMoverDerecha;
+        accionDash.performed     += OnDash;
     }
 
     void OnDisable()
     {
         moverIzquierda.performed -= OnMoverIzquierda;
-        moverDerecha.performed -= OnMoverDerecha;
+        moverDerecha.performed   -= OnMoverDerecha;
+        accionDash.performed     -= OnDash;
+
         moverIzquierda.Disable();
         moverDerecha.Disable();
+        accionDash.Disable();
     }
 
     void OnMoverIzquierda(InputAction.CallbackContext ctx) => CambiarCarril(-1);
-    void OnMoverDerecha(InputAction.CallbackContext ctx) => CambiarCarril(1);
+    void OnMoverDerecha(InputAction.CallbackContext ctx)   => CambiarCarril(1);
+
+    void OnDash(InputAction.CallbackContext ctx)
+    {
+        // Solo si no hay dash activo y el jugador puede moverse
+        if (!puedeMover || dashActivo) return;
+        StartCoroutine(EjecutarDash());
+    }
+
+    IEnumerator EjecutarDash()
+    {
+        dashActivo = true;
+        timerDash  = duracionDash;
+
+        // Aplicar multiplicador al LaneSpawner
+        LaneSpawner spawner = FindFirstObjectByType<LaneSpawner>();
+        if (spawner != null)
+            spawner.multiplicadorVelocidad = multiplicadorDash;
+
+        // Esperar la duración del dash
+        while (timerDash > 0f)
+        {
+            timerDash -= Time.deltaTime;
+            yield return null;
+        }
+
+        // Restaurar velocidad normal
+        if (spawner != null)
+            spawner.multiplicadorVelocidad = 1f;
+
+        dashActivo = false;
+    }
 
     void Start()
     {
         carrilActual = 1;
-        xObjetivo = carrilCentro;
+        xObjetivo    = carrilCentro;
 
-        //  obtener referencia al audio
         playerAudio = GetComponent<PlayerAudio>();
 
         numeroDisplay.MostrarNumero(GameManager.Instance.ValorJugador);
@@ -84,18 +133,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (!puedeMover) return;
-
         MoverHaciaCarril();
 
-        //  sonido de movimiento
         if (Mathf.Abs(transform.position.x - xObjetivo) > 0.01f)
-        {
             playerAudio.ReproducirMovimiento(true);
-        }
         else
-        {
             playerAudio.ReproducirMovimiento(false);
-        }
     }
 
     void CambiarCarril(int direccion)
@@ -139,33 +182,34 @@ public class PlayerController : MonoBehaviour
             if (GameManager.Instance.ValorJugador == puerta.numeroMeta)
             {
                 int multiplicador;
-
                 switch (GameManager.Instance.Dificultad)
                 {
-                    case "medio":
-                        multiplicador = 20;
-                        break;
-                    case "dificil":
-                        multiplicador = 30;
-                        break;
-                    default:
-                        multiplicador = 10;
-                        break;
+                    case "medio":   multiplicador = 20; break;
+                    case "dificil": multiplicador = 30; break;
+                    default:        multiplicador = 10; break;
                 }
 
                 GameManager.Instance.Puntaje += 100 + GameManager.Instance.PuertasVivas * multiplicador;
 
-                //  sonido de puntos
                 playerAudio.ReproducirPuntos();
 
                 GameManager.Instance.PuertasVivas += 1;
-                GameManager.Instance.ValorJugador = puerta.numeroMeta;
-                GameManager.Instance.ValorBase = puerta.numeroMeta;
+                GameManager.Instance.ValorJugador  = puerta.numeroMeta;
+                GameManager.Instance.ValorBase      = puerta.numeroMeta;
 
                 puerta.MostrarExito();
                 numeroDisplay.MostrarNumero(GameManager.Instance.ValorJugador);
 
                 puedeCambiarCarril = true;
+
+                // Si el dash estaba activo al cruzar la puerta, cancelarlo
+                if (dashActivo)
+                {
+                    StopAllCoroutines();
+                    LaneSpawner spawner = FindFirstObjectByType<LaneSpawner>();
+                    if (spawner != null) spawner.multiplicadorVelocidad = 1f;
+                    dashActivo = false;
+                }
 
                 FindFirstObjectByType<LaneSpawner>()?.ForzarNuevaOla();
             }
@@ -173,10 +217,7 @@ public class PlayerController : MonoBehaviour
             {
                 puedeMover = false;
                 puerta.MostrarError();
-
-                //  sonido de perder
                 playerAudio.ReproducirPerder();
-
                 Invoke(nameof(IrGameOver), 0.8f);
             }
         }
@@ -185,19 +226,13 @@ public class PlayerController : MonoBehaviour
     void AplicarSkinGuardada()
     {
         int skin = PlayerPrefs.GetInt("SkinSeleccionada", 0);
-
-        if (skin < 0 || skin >= colores.Length)
-            skin = 0;
+        if (skin < 0 || skin >= colores.Length) skin = 0;
 
         Color colorElegido = colores[skin];
-
         var renderers = GetComponentsInChildren<SpriteRenderer>();
-
         foreach (var sr in renderers)
-        {
             if (sr.material != null)
                 sr.material.SetColor("_Color", colorElegido);
-        }
 
         if (numeroDisplay != null)
             numeroDisplay.CambiarColor(colorElegido);

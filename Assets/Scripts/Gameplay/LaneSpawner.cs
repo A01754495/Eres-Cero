@@ -27,6 +27,7 @@ public class LaneSpawner : MonoBehaviour
 
     // Lista de olas activas — cada ola tiene sus objetos y si ya está bajando
     private List<Ola> olasActivas = new List<Ola>();
+    [HideInInspector] public float multiplicadorVelocidad = 1f;
 
     private string[] opsFacil   = { "+", "-" };
     private string[] opsMedio   = { "+", "-", "*" };
@@ -47,9 +48,9 @@ public class LaneSpawner : MonoBehaviour
 
     void Update()
     {
-        float velocidad = GameManager.Instance != null
+        float velocidad = (GameManager.Instance != null
                         ? GameManager.Instance.VelocidadActual()
-                        : 3f;
+                        : 3f) * multiplicadorVelocidad;
 
         // Mover solo las olas que ya están bajando
         foreach (var ola in olasActivas)
