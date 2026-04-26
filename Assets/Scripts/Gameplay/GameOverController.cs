@@ -6,8 +6,7 @@ using System.Collections;
 
 public class GameOverController : MonoBehaviour
 {
-    private const string URL_BASE = "http://localhost:3000";
-
+    private const string URL_BASE = "https://ygtfxb3dtnzrhhgw4sixxcynsq0qnzpw.lambda-url.us-east-1.on.aws";
     private UIDocument ui;
     private Label  labelPuntajeFinal;
     private Label  labelPuertas;
@@ -86,12 +85,13 @@ public class GameOverController : MonoBehaviour
         var gm = GameManager.Instance;
 
         string fechaHora = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        string tiempo = gm.TiempoPartida.ToString("F2", System.Globalization.CultureInfo.InvariantCulture);
 
         string body = $"{{\"idJugador\":{gm.IdJugador}," +
                     $"\"fechaHora\":\"{fechaHora}\"," +
                     $"\"puntaje\":{gm.Puntaje}," +
                     $"\"dificultad\":\"{gm.Dificultad}\"," +
-                    $"\"tiempo\":{gm.TiempoPartida:F2}}}";
+                    $"\"tiempo\":{tiempo}}}"; 
 
         using var req = new UnityWebRequest($"{URL_BASE}/partida", "POST");
         req.uploadHandler   = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(body));
@@ -100,7 +100,7 @@ public class GameOverController : MonoBehaviour
         yield return req.SendWebRequest();
 
         if (req.result != UnityWebRequest.Result.Success)
-            Debug.LogWarning("No se pudo guardar la partida: " + req.error);
+            Debug.LogWarning("No se pudo guardar la partida: " +req.downloadHandler.text);
         else
             Debug.Log("Partida guardada: " + req.downloadHandler.text);
     }

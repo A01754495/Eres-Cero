@@ -10,35 +10,35 @@
                     <ui:Image name="ImgTrofeo1" class="trofeo" style="background-image: url(&quot;project://database/Assets/Sprites/hardcore_trofeo.png?fileID=2800000&amp;guid=6740ef6efd336db49ab1ec24889cd081&amp;type=3#hardcore_trofeo&quot;); height: 200px; width: 210px;"/>
                     <ui:VisualElement name="TextoLogro1" class="texto-logro" style="flex-grow: 1;">
                         <ui:Label text="Hardcore protocol" name="Titulologro" class="titulo-logro"/>
-                        <ui:Label text="Atraviesa 1000 &#10;puertas en dificultad &#10;difícil" name="Descripcion" class="desc-logro" style="font-size: 25px;"/>
+                        <ui:Label text="Atraviesa 20 puertas &#10;en una sola partida en &#10;dificultad difícil" name="Descripcion" class="desc-logro" style="font-size: 25px;"/>
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement name="Logro2" class="logro" style="flex-grow: 1; position: absolute; top: 312px; left: 798px;">
                     <ui:Image name="ImgTrofeo1" class="trofeo" style="background-image: url(&quot;project://database/Assets/Sprites/identidad.png?fileID=2800000&amp;guid=6c3d75e2143c2404bbc10f2c667a44d0&amp;type=3#identidad&quot;); height: 226px; width: 202px;"/>
                     <ui:VisualElement name="TextoLogro1" class="texto-logro" style="flex-grow: 1;">
                         <ui:Label text="Identidad Completa" name="Titulologro" class="titulo-logro"/>
-                        <ui:Label text="Usa todas las skins &#10;al menos una vez" name="Descripcion" class="desc-logro" style="font-size: 25px; width: 234px;"/>
+                        <ui:Label text="Desbloquea todos &#10;los aspectos" name="Descripcion" class="desc-logro" style="font-size: 25px; width: 234px;"/>
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement name="Logro3" class="logro" style="flex-grow: 1; position: absolute; top: 297px; left: 134px;">
                     <ui:Image name="ImgTrofeo1" class="trofeo" style="background-image: url(&quot;project://database/Assets/Sprites/ambicion_creciente.png?fileID=2800000&amp;guid=b22b5a09e8a292a4dbcd5683b1c130e3&amp;type=3#ambicion_creciente&quot;); height: 178px; width: 196px;"/>
                     <ui:VisualElement name="TextoLogro1" class="texto-logro" style="flex-grow: 1;">
                         <ui:Label text="Ambición creciente" name="Titulologro" class="titulo-logro"/>
-                        <ui:Label text="Alcanza 400 puntos &#10;en una sola sesión" name="Descripcion" class="desc-logro" style="font-size: 25px; width: 262px;"/>
+                        <ui:Label text="Alcanza 10,000 puntos &#10;en una sola sesión" name="Descripcion" class="desc-logro" style="font-size: 25px; width: 262px;"/>
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement name="Logro4" class="logro" style="flex-grow: 1; position: absolute; top: 24px; left: 132px;">
                     <ui:Image name="ImgTrofeo1" class="trofeo" style="background-image: url(&quot;project://database/Assets/Sprites/travesia_trofeo.png?fileID=2800000&amp;guid=049f2a79fe4836542970340c5791f8ac&amp;type=3#travesia_trofeo&quot;); height: 186px; width: 198px;"/>
                     <ui:VisualElement name="TextoLogro1" class="texto-logro" style="flex-grow: 1;">
                         <ui:Label text="Travesía infinita" name="Titulologro" class="titulo-logro"/>
-                        <ui:Label text="Atraviesa 1000 &#10;puertas" name="Descripcion" class="desc-logro" style="font-size: 25px;"/>
+                        <ui:Label text="Dura 10 minutos en una &#10;sola partida" name="Descripcion" class="desc-logro" style="font-size: 25px;"/>
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement name="Logro5" class="logro" style="flex-grow: 1; position: absolute; top: 582px; left: 144px;">
                     <ui:Image name="ImgTrofeo1" class="trofeo" style="background-image: url(&quot;project://database/Assets/Sprites/dominio_absoluto.png?fileID=2800000&amp;guid=48a6bbcde1f09dc47a5a03dfda9d5f02&amp;type=3#dominio_absoluto&quot;); height: 212px; width: 192px;"/>
                     <ui:VisualElement name="TextoLogro1" class="texto-logro" style="flex-grow: 1;">
                         <ui:Label text="Dominio absoluto" name="Titulologro" class="titulo-logro" style="width: 274px;"/>
-                        <ui:Label text="Controla el Top 3 &#10;durante un ciclo &#10;completo (30 días)" name="Descripcion" class="desc-logro" style="font-size: 25px; width: 268px;"/>
+                        <ui:Label text="Consigue el top 1 histórico" name="Descripcion" class="desc-logro" style="font-size: 25px; width: 268px;"/>
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement name="Logro6" class="logro" style="flex-grow: 1; position: absolute; top: 600px; left: 812px;">
