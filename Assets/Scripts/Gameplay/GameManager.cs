@@ -50,6 +50,34 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         SkinSeleccionada = PlayerPrefs.GetInt("SkinSeleccionada", 0);
+        CargarSesionGuardada(); // ← NUEVO: carga sesión del disco si existe
+    }
+
+    // ── Guarda la sesión en disco para que persista entre aperturas
+    public void GuardarSesion()
+    {
+        PlayerPrefs.SetInt("SesionIdJugador", IdJugador);
+        PlayerPrefs.SetString("SesionAlias", AliasJugador);
+        PlayerPrefs.Save();
+    }
+
+    // ── Carga la sesión guardada al arrancar
+    void CargarSesionGuardada()
+    {
+        int idGuardado = PlayerPrefs.GetInt("SesionIdJugador", -1);
+        if (idGuardado > 0)
+        {
+            IdJugador    = idGuardado;
+            AliasJugador = PlayerPrefs.GetString("SesionAlias", "");
+        }
+    }
+
+    // ── Borra la sesión del disco (se llama al cerrar sesión)
+    void BorrarSesionGuardada()
+    {
+        PlayerPrefs.DeleteKey("SesionIdJugador");
+        PlayerPrefs.DeleteKey("SesionAlias");
+        PlayerPrefs.Save();
     }
 
     public void IniciarPartida(string dificultad)
@@ -103,5 +131,6 @@ public class GameManager : MonoBehaviour
     {
         IdJugador    = -1;
         AliasJugador = "";
+        BorrarSesionGuardada(); // ← NUEVO: borra del disco
     }
 }

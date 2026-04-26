@@ -367,6 +367,7 @@ public class LoginController : MonoBehaviour
         // Guardar sesión en GameManager
         GameManager.Instance.IdJugador    = resp.idJugador;
         GameManager.Instance.AliasJugador = resp.alias;
+        GameManager.Instance.GuardarSesion();
         SceneManager.LoadScene("MenuPrincipal");
     }
 
@@ -416,6 +417,7 @@ public class LoginController : MonoBehaviour
         // CU-01 paso 6: sesión automática tras registro exitoso
         GameManager.Instance.IdJugador    = resp.idJugador;
         GameManager.Instance.AliasJugador = resp.alias;
+        GameManager.Instance.GuardarSesion();
         SceneManager.LoadScene("MenuPrincipal");
     }
 

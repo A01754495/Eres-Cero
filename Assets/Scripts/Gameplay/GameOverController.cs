@@ -46,9 +46,8 @@ public class GameOverController : MonoBehaviour
                 labelTiempo.text = $"Tiempo: {seg / 60:00}:{seg % 60:00}";
             }
 
-            // TODO BACKEND: Descomentar para guardar en servidor
-            // if (GameManager.Instance.HaySesion)
-            //     StartCoroutine(GuardarPartida());
+            if (GameManager.Instance.HaySesion)
+                StartCoroutine(GuardarPartida());
         }
 
             if (btnReintentar != null)
@@ -82,18 +81,27 @@ public class GameOverController : MonoBehaviour
 
     void OnMenu(ClickEvent e) => SceneManager.LoadScene("MenuPrincipal");
 
-    // TODO BACKEND: POST /partida — descomentar cuando la API esté lista
-    // IEnumerator GuardarPartida()
-    // {
-    //     var gm = GameManager.Instance;
-    //     string body = $"{{\"idJugador\":{gm.IdJugador},\"puntaje\":{gm.Puntaje}," +
-    //                   $"\"dificultad\":\"{gm.Dificultad}\",\"tiempo\":{gm.TiempoPartida:F2}}}";
-    //     using var req = new UnityWebRequest($"{URL_BASE}/partida", "POST");
-    //     req.uploadHandler   = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(body));
-    //     req.downloadHandler = new DownloadHandlerBuffer();
-    //     req.SetRequestHeader("Content-Type", "application/json");
-    //     yield return req.SendWebRequest();
-    //     if (req.result != UnityWebRequest.Result.Success)
-    //         Debug.LogWarning("No se pudo guardar la partida: " + req.error);
-    // }
+    IEnumerator GuardarPartida()
+    {
+        var gm = GameManager.Instance;
+
+        string fechaHora = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+        string body = $"{{\"idJugador\":{gm.IdJugador}," +
+                    $"\"fechaHora\":\"{fechaHora}\"," +
+                    $"\"puntaje\":{gm.Puntaje}," +
+                    $"\"dificultad\":\"{gm.Dificultad}\"," +
+                    $"\"tiempo\":{gm.TiempoPartida:F2}}}";
+
+        using var req = new UnityWebRequest($"{URL_BASE}/partida", "POST");
+        req.uploadHandler   = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(body));
+        req.downloadHandler = new DownloadHandlerBuffer();
+        req.SetRequestHeader("Content-Type", "application/json");
+        yield return req.SendWebRequest();
+
+        if (req.result != UnityWebRequest.Result.Success)
+            Debug.LogWarning("No se pudo guardar la partida: " + req.error);
+        else
+            Debug.Log("Partida guardada: " + req.downloadHandler.text);
+    }
 }
