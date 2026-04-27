@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     // --- Tutorial ---
     public bool EsTutorial       { get; set; } = false;
-    public bool EsPrimeraPartida => PlayerPrefs.GetInt("HaJugado", 0) == 0;
+    public bool EsPrimeraPartida { get; set; } = false;
 
     public void MarcarPartidaJugada()
     {
@@ -136,17 +136,17 @@ public class GameManager : MonoBehaviour
             case "facil":
                 VelocidadBase  = 1.5f;
                 IncrementoVel  = 0.10f;
-                RangoOperacion = 50;
+                RangoOperacion = 5;
                 break;
             case "medio":
                 VelocidadBase  = 2.5f;
                 IncrementoVel  = 0.15f;
-                RangoOperacion = 100;
+                RangoOperacion = 10;
                 break;
             case "dificil":
                 VelocidadBase  = 3.5f;
                 IncrementoVel  = 0.25f;
-                RangoOperacion = 100;
+                RangoOperacion = 20;
                 break;
         }
     }

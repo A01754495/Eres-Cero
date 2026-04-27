@@ -53,6 +53,12 @@ public class AudioManager : MonoBehaviour
 
     void ReproducirMusica(string nombreEscena)
     {
+        if (nombreEscena == "Cinematica")
+        {
+            audioSource.Stop();
+            return;
+        }
+        
         AudioClip nuevaMusica;
 
         

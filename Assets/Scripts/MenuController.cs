@@ -127,7 +127,7 @@ public class MenuController : MonoBehaviour
         {
             GameManager.Instance.EsTutorial = true;
             GameManager.Instance.IniciarPartida("facil");
-            SceneManager.LoadScene("Gameplay");
+            SceneManager.LoadScene("Gameplay"); // <- directo a Gameplay, el TutorialController maneja el video
         }
         else
         {

@@ -1,8 +1,8 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Login.uss?fileID=7433441132597879392&amp;guid=9f6977cbced8ec84490c54eb724b7107&amp;type=3#Login"/>
-    <ui:VisualElement name="Root" class="root" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/background3.png?fileID=2800000&amp;guid=87b5900f6c2c69f4b892cc481709a265&amp;type=3#background3&quot;);">
+    <ui:VisualElement name="Root" class="root" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/background3.png?fileID=2800000&amp;guid=87b5900f6c2c69f4b892cc481709a265&amp;type=3#background3&quot;); display: flex;">
         <ui:VisualElement name="PanelLogin" class="panel" style="flex-grow: 1; display: none;">
-            <ui:Label text="Label" name="LabelErrorLogin" style="display: none;"/>
+            <ui:Label text="Label" name="LabelErrorLogin" enable-rich-text="true" style="display: none; top: 78%; font-size: 28px;"/>
             <ui:Label text="Bienvenido a" name="TituloSuperiorLogin" class="titulo-superior" style="-unity-font-style: bold; position: absolute; top: 220px; left: 450px;"/>
             <ui:Label text="Inicia sesión" name="SubtituloLogin" class="subtitulo-login" style="position: absolute; top: 338px; left: 820px;"/>
             <ui:Image style="background-image: url(&quot;project://database/Assets/Sprites/ERESCERO%20(2).png?fileID=2800000&amp;guid=39b023ac0e784aa449960325f92b13e1&amp;type=3#ERESCERO (2)&quot;); height: 142px; width: 617px; position: absolute; top: 192px; left: 900px;"/>
@@ -14,14 +14,14 @@
                     <ui:Label text="Nombre de usuario" name="LblUsuarioLogin" class="label-form" style="position: absolute; top: 8px; left: 90px;"/>
                 </ui:VisualElement>
                 <ui:VisualElement name="ColumnaInputsLogin" class="columna-inputs" style="flex-grow: 1; height: 563px; position: absolute; top: 192px; left: 162px;">
-                    <ui:TextField label="" placeholder-text="" name="CampoNipLogin" class="input-login" style="position: absolute; top: 413px; left: 505px;"/>
+                    <ui:TextField label="" placeholder-text="" name="CampoNipLogin" password="true" class="input-login" style="position: absolute; top: 413px; left: 505px;"/>
                     <ui:Label text="PIN" name="LblPinLogin" class="label-form" style="width: 106px; position: absolute; top: 412px; left: 298px;"/>
                 </ui:VisualElement>
                 <ui:TextField label="" placeholder-text="" name="CampoAliasLogin" value="" class="input-login" style="position: absolute; top: 495px; left: 670px;"/>
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="PanelRegistro" class="panel-registro" style="flex-grow: 1; display: flex; -unity-background-image-tint-color: rgb(255, 255, 255);">
-            <ui:Label text="Label" name="LabelErrorRegistro" style="display: none;"/>
+            <ui:Label text="Label" name="LabelErrorRegistro" style="display: none; top: 78%; font-size: 28px;"/>
             <ui:Label text="Bienvenido a" name="TituloSuperiorRegistro" class="titulo-superior" style="position: absolute; top: 119px; left: 461px;"/>
             <ui:VisualElement name="FormularioRegistro" class="formulario-registro" style="flex-grow: 1;">
                 <ui:VisualElement name="ColumnaLabelsRegistro" class="columna-labels" style="flex-grow: 1; position: absolute; top: 266px; left: -369px;">

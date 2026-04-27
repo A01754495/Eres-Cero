@@ -19,7 +19,7 @@ public class AspectosController : MonoBehaviour
     private Button[] btnSkins = new Button[12];
 
     private readonly int[] puntajesDesbloqueo = {
-        0,      // Skin 1  — gratis
+        0,      // Skin 1
         5000,   // Skin 2
         10000,  // Skin 3
         15000,  // Skin 4
@@ -37,6 +37,8 @@ public class AspectosController : MonoBehaviour
     private int skinEnPreview          = 0;
     private HashSet<int> aspectosDesbloqueados = new HashSet<int>();
 
+    private SkinSelector skinSelector;
+
     void OnEnable()
     {
         ui = GetComponent<UIDocument>();
@@ -51,11 +53,21 @@ public class AspectosController : MonoBehaviour
         for (int i = 0; i < 12; i++)
             btnSkins[i] = root.Q<Button>($"BtnSkin{i + 1}");
 
+        // Obtener referencia al SkinSelector
+        skinSelector = GetComponent<SkinSelector>();
+        if (skinSelector == null)
+            skinSelector = FindFirstObjectByType<SkinSelector>();
+
         // Empezar todo bloqueado mientras carga
         AplicarEstadosSkins(new HashSet<int> { 1 });
 
+        // Mostrar la skin que tiene seleccionada el jugador en esta sesión
         skinSeleccionadaActual = GameManager.Instance?.SkinSeleccionada ?? 0;
         skinEnPreview          = skinSeleccionadaActual;
+
+        // Actualizar el preview con la skin actual del jugador
+        skinSelector?.CambiarSkin(skinSeleccionadaActual);
+        ActualizarPreview(skinSeleccionadaActual);
 
         for (int i = 0; i < 12; i++)
         {
@@ -87,17 +99,11 @@ public class AspectosController : MonoBehaviour
 
     void OnDisable() { }
 
-    // ================================================================
-    // 1. Obtener puntaje total del jugador
-    // 2. Obtener aspectos ya registrados en BD
-    // 3. Guardar en BD los que apliquen y no estén aún
-    // 4. Consultar estado final y aplicar UI
-    // ================================================================
     IEnumerator CargarAspectosDesdeDB()
     {
         int idJugador = GameManager.Instance.IdJugador;
 
-        // Paso 1 — puntaje total acumulado
+        // Paso 1 — puntaje total
         int puntajeTotal = 0;
         using var reqPuntaje = UnityWebRequest.Get($"{URL_BASE}/puntaje-total/{idJugador}");
         yield return reqPuntaje.SendWebRequest();
@@ -107,8 +113,6 @@ public class AspectosController : MonoBehaviour
             var resp = JsonUtility.FromJson<RespuestaPuntaje>(reqPuntaje.downloadHandler.text);
             if (resp != null) puntajeTotal = resp.puntajeTotal;
         }
-        else
-            Debug.LogWarning("No se pudo obtener puntaje total: " + reqPuntaje.downloadHandler.text);
 
         // Paso 2 — aspectos ya en BD
         var idsEnBD = new HashSet<int>();
@@ -120,10 +124,8 @@ public class AspectosController : MonoBehaviour
             var lista = JsonHelper.ParseList<AspectoEntry>(reqAspectos.downloadHandler.text);
             foreach (var a in lista) idsEnBD.Add(a.idAspecto);
         }
-        else
-            Debug.LogWarning("No se pudo obtener aspectos: " + reqAspectos.downloadHandler.text);
 
-        // Paso 3 — guardar en BD los que apliquen y no estén registrados
+        // Paso 3 — guardar nuevos desbloqueos en BD
         for (int i = 0; i < 12; i++)
         {
             int idAspecto = i + 1;
@@ -131,11 +133,11 @@ public class AspectosController : MonoBehaviour
                 yield return StartCoroutine(GuardarAspectoEnBD(idAspecto));
         }
 
-        // Paso 4 — consultar estado final
+        // Paso 4 — estado final
         using var reqFinal = UnityWebRequest.Get($"{URL_BASE}/aspectos-jugador/{idJugador}");
         yield return reqFinal.SendWebRequest();
 
-        aspectosDesbloqueados = new HashSet<int> { 1 }; // skin 1 siempre gratis
+        aspectosDesbloqueados = new HashSet<int> { 1 };
         if (reqFinal.result == UnityWebRequest.Result.Success)
         {
             var listaFinal = JsonHelper.ParseList<AspectoEntry>(reqFinal.downloadHandler.text);
@@ -143,12 +145,19 @@ public class AspectosController : MonoBehaviour
         }
 
         AplicarEstadosSkins(aspectosDesbloqueados);
+
+        // Si la skin seleccionada no está desbloqueada en esta cuenta, resetear a 1
+        if (!aspectosDesbloqueados.Contains(skinSeleccionadaActual + 1))
+        {
+            skinSeleccionadaActual = 0;
+            skinEnPreview          = 0;
+            GameManager.Instance.SkinSeleccionada = 0;
+            skinSelector?.CambiarSkin(0);
+        }
+
         ActualizarPreview(skinSeleccionadaActual);
     }
 
-    // ================================================================
-    // POST /aspecto — { idJugador, idAspecto, fechaDesbloqueo }
-    // ================================================================
     IEnumerator GuardarAspectoEnBD(int idAspecto)
     {
         string fecha = System.DateTime.Now.ToString("yyyy-MM-dd");
@@ -168,9 +177,6 @@ public class AspectosController : MonoBehaviour
             Debug.Log($"Aspecto {idAspecto} desbloqueado en BD.");
     }
 
-    // ================================================================
-    // UI
-    // ================================================================
     void AplicarEstadosSkins(HashSet<int> desbloqueados)
     {
         for (int i = 0; i < 12; i++)
@@ -188,6 +194,7 @@ public class AspectosController : MonoBehaviour
     void OnClickSkin(int idx)
     {
         skinEnPreview = idx;
+        skinSelector?.CambiarSkin(idx); // actualizar preview visual
         ActualizarPreview(idx);
     }
 

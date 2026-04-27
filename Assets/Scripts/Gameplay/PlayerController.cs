@@ -243,7 +243,7 @@ public class PlayerController : MonoBehaviour
 
     void AplicarSkinGuardada()
     {
-        int skin = PlayerPrefs.GetInt("SkinSeleccionada", 0);
+        int skin = GameManager.Instance != null ? GameManager.Instance.SkinSeleccionada : 0;
         if (skin < 0 || skin >= colores.Length) skin = 0;
 
         Color colorElegido = colores[skin];

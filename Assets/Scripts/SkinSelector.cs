@@ -3,7 +3,7 @@ using UnityEngine.UIElements;
 
 public class SkinSelector : MonoBehaviour
 {
-    //  COLORES (LÓGICA) 
+    // COLORES (LÓGICA)
     private Color[] colores = new Color[]
     {
         Color.red,
@@ -20,57 +20,36 @@ public class SkinSelector : MonoBehaviour
         Color.black
     };
 
-    //  IMÁGENES (VISUAL) 
+    // IMÁGENES (VISUAL)
     public Texture2D[] skins;
 
     private VisualElement preview;
     private int skinSeleccionada = 0;
 
-    private Button btnSeleccionar;
-    private Button btnSeleccionado;
-
     void Start()
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
-
         preview = root.Q<VisualElement>("ImagenPreview");
 
-        // BOTONES SKIN
-        for (int i = 0; i < colores.Length; i++)
-        {
-            int index = i;
-            var boton = root.Q<Button>("BtnSkin" + (i + 1));
+        // NO registrar callbacks de botones aquí — los maneja AspectosController
 
-            if (boton != null)
-            {
-                boton.clicked += () =>
-                {
-                    CambiarSkin(index);
-                };
-            }
-        }
-
-        // BOTONES
-        btnSeleccionar = root.Q<Button>("BtnSeleccionar");
-        btnSeleccionado = root.Q<Button>("BtnSeleccionado");
-
-        btnSeleccionado.style.display = DisplayStyle.None;
-
-        btnSeleccionar.clicked += ConfirmarSkin;
-
-        // cargar skin guardada
-        skinSeleccionada = PlayerPrefs.GetInt("SkinSeleccionada", 0);
+        // Cargar skin desde GameManager
+        skinSeleccionada = GameManager.Instance != null ? GameManager.Instance.SkinSeleccionada : 0;
         CambiarSkin(skinSeleccionada);
     }
 
-    void CambiarSkin(int index)
+    // Public — AspectosController lo llama al hacer clic en una skin
+    public void CambiarSkin(int index)
     {
+        if (index < 0 || index >= colores.Length) index = 0;
         skinSeleccionada = index;
 
-        //  LÓGICA → SIEMPRE COLOR 
+        // Aplicar color al personaje
         AplicarColor(colores[index]);
 
-        //  VISUAL → IMAGEN SI EXISTE 
+        // Actualizar imagen de preview
+        if (preview == null) return;
+
         if (skins != null && index < skins.Length && skins[index] != null)
         {
             preview.style.backgroundImage = new StyleBackground(skins[index]);
@@ -78,35 +57,19 @@ public class SkinSelector : MonoBehaviour
         }
         else
         {
-            // fallback si no hay imagen
             preview.style.backgroundImage = null;
             preview.style.backgroundColor = new StyleColor(colores[index]);
         }
     }
 
-    void ConfirmarSkin()
-    {
-        PlayerPrefs.SetInt("SkinSeleccionada", skinSeleccionada);
-
-        btnSeleccionar.style.display = DisplayStyle.None;
-        btnSeleccionado.style.display = DisplayStyle.Flex;
-    }
-
     void AplicarColor(Color color)
     {
         var player = FindFirstObjectByType<PlayerController>();
+        if (player == null) return;
 
-        if (player != null)
-        {
-            var renderers = player.GetComponentsInChildren<SpriteRenderer>();
-
-            foreach (var sr in renderers)
-            {
-                if (sr.material != null)
-                {
-                    sr.material.SetColor("_Color", color);
-                }
-            }
-        }
+        var renderers = player.GetComponentsInChildren<SpriteRenderer>();
+        foreach (var sr in renderers)
+            if (sr.material != null)
+                sr.material.SetColor("_Color", color);
     }
 }

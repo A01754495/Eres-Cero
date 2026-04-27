@@ -1,12 +1,17 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using UnityEngine.Networking;
+using System.Collections;
 
 public class PerfilController : MonoBehaviour
 {
+    private const string URL_BASE = "https://ygtfxb3dtnzrhhgw4sixxcynsq0qnzpw.lambda-url.us-east-1.on.aws";
+
     private UIDocument ui;
 
     private Label  labelUsuario;
+    private Label  labelPuntaje;
     private Button btnVolver;
     private Button btnCerrarSesion;
 
@@ -17,10 +22,10 @@ public class PerfilController : MonoBehaviour
         var root = ui.rootVisualElement;
 
         labelUsuario    = root.Q<Label>("Usuario");
+        labelPuntaje    = root.Q<Label>("Puntaje");
         btnVolver       = root.Q<Button>("BtnVolver");
         btnCerrarSesion = root.Q<Button>("BtnCerrarSesion");
 
-        // Mostrar alias del jugador en sesión
         if (labelUsuario != null)
         {
             if (GameManager.Instance != null && GameManager.Instance.HaySesion)
@@ -29,7 +34,13 @@ public class PerfilController : MonoBehaviour
                 labelUsuario.text = "Nombre de usuario: Invitado";
         }
 
-        //  BOTÓN VOLVER CON SONIDO 
+        // Mostrar "Cargando..." mientras trae el puntaje
+        if (labelPuntaje != null)
+            labelPuntaje.text = "Puntaje total: ...";
+
+        if (GameManager.Instance != null && GameManager.Instance.HaySesion)
+            StartCoroutine(CargarPuntajeTotal());
+
         if (btnVolver != null)
             btnVolver.RegisterCallback<ClickEvent>(e =>
             {
@@ -37,7 +48,6 @@ public class PerfilController : MonoBehaviour
                 VolverMenu(e);
             });
 
-        //  BOTÓN CERRAR SESIÓN CON SONIDO 
         if (btnCerrarSesion != null)
             btnCerrarSesion.RegisterCallback<ClickEvent>(e =>
             {
@@ -46,21 +56,37 @@ public class PerfilController : MonoBehaviour
             });
     }
 
-    void OnDisable()
+    void OnDisable() { }
+
+    IEnumerator CargarPuntajeTotal()
     {
-        //  No se desregistran porque usamos lambdas 
+        int idJugador = GameManager.Instance.IdJugador;
+        using var req = UnityWebRequest.Get($"{URL_BASE}/puntaje-total/{idJugador}");
+        yield return req.SendWebRequest();
+
+        if (labelPuntaje == null) yield break;
+
+        if (req.result == UnityWebRequest.Result.Success)
+        {
+            var resp = JsonUtility.FromJson<RespuestaPuntaje>(req.downloadHandler.text);
+            int puntaje = resp != null ? resp.puntajeTotal : 0;
+            labelPuntaje.text = $"Puntaje total: {puntaje}";
+        }
+        else
+        {
+            labelPuntaje.text = "Puntaje total: --";
+            Debug.LogWarning("No se pudo cargar puntaje total: " + req.downloadHandler.text);
+        }
     }
 
-    void VolverMenu(ClickEvent evt)
-    {
-        SceneManager.LoadScene("MenuPrincipal");
-    }
+    void VolverMenu(ClickEvent evt) => SceneManager.LoadScene("MenuPrincipal");
 
     void CerrarSesion(ClickEvent evt)
     {
         if (GameManager.Instance != null)
             GameManager.Instance.CerrarSesion();
-
         SceneManager.LoadScene("Login");
     }
+
+    [System.Serializable] private class RespuestaPuntaje { public int puntajeTotal; }
 }
