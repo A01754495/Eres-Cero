@@ -29,9 +29,9 @@ public class LaneSpawner : MonoBehaviour
     private List<Ola> olasActivas = new List<Ola>();
     [HideInInspector] public float multiplicadorVelocidad = 1f;
 
-    private string[] opsFacil   = { "+", "-" };
-    private string[] opsMedio   = { "+", "-", "*" };
-    private string[] opsDificil = { "+", "-", "*", "/" };
+    private string[] opsFacil   = { "+", "-", "+", "-", "+", "-" };
+    private string[] opsMedio   = { "+", "-", "+", "-", "*", "*", "*" };
+    private string[] opsDificil = { "+", "-", "+", "-", "*", "*", "*", "/", "/", "/" };
 
     // Clase interna que representa una ola (casillas + puerta)
     private class Ola
@@ -96,7 +96,8 @@ public class LaneSpawner : MonoBehaviour
         // Generar meta diferente al valorBase
         int meta;
         int intentosMeta = 0;
-        do { meta = Random.Range(1, rango + 1); intentosMeta++; }
+        int metaMin = GameManager.Instance.Dificultad == "dificil" ? -rango : 1;
+        do { meta = Random.Range(metaMin, rango + 1); intentosMeta++; }
         while (meta == valorBase && intentosMeta < 50);
         if (meta == valorBase) meta = valorBase + 1;
 

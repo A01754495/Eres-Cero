@@ -98,7 +98,17 @@ public class LogrosController : MonoBehaviour
         }
 
         // Paso 4 — mostrar UI
-        if (idsFinales.Count == 0)
+        using var reqPuntaje = UnityWebRequest.Get($"{URL_BASE}/puntaje-total/{idJugador}");
+        yield return reqPuntaje.SendWebRequest();
+
+        bool haJugado = false;
+        if (reqPuntaje.result == UnityWebRequest.Result.Success)
+        {
+            var respPuntaje = JsonUtility.FromJson<RespuestaPuntaje>(reqPuntaje.downloadHandler.text);
+            haJugado = respPuntaje != null && respPuntaje.puntajeTotal > 0;
+        }
+
+        if (!haJugado)
             MostrarSinPartidas();
         else
         {

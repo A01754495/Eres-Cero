@@ -136,17 +136,17 @@ public class GameManager : MonoBehaviour
             case "facil":
                 VelocidadBase  = 1.5f;
                 IncrementoVel  = 0.10f;
-                RangoOperacion = 5;
+                RangoOperacion = 50;
                 break;
             case "medio":
                 VelocidadBase  = 2.5f;
                 IncrementoVel  = 0.15f;
-                RangoOperacion = 10;
+                RangoOperacion = 100;
                 break;
             case "dificil":
                 VelocidadBase  = 3.5f;
                 IncrementoVel  = 0.25f;
-                RangoOperacion = 20;
+                RangoOperacion = 100;
                 break;
         }
     }

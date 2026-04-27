@@ -28,7 +28,7 @@ public class TutorialController : MonoBehaviour
         "Usa ← → (o A / D) para moverte\nentre los 3 carriles.",
         "Las casillas modifican tu valor.\nElige la operación correcta\npara llegar al número de la puerta.",
         "Si llegas a la puerta con el\nnúmero correcto... ¡pasas!\nSi no, ¡Game Over!",
-        "La velocidad aumenta con cada puerta.\n¡Entre más puertas cruces,\nmás puntos ganas!\n\n¡Buena suerte!"
+        "La velocidad aumenta con cada puerta.\n¡Entre más puertas cruces,\nmás puntos ganas!\n¿Ya sabes qué casilla elegir?\n¡Presiona ESPACIO para adelantar\ntodo y llegar más rápido a la puerta!\n¡Buena suerte!"
     };
 
     private int mensajeActual = 0;
