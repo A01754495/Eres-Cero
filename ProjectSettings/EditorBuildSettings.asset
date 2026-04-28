@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuPrincipal.unity
     guid: 035b4a7644925644fab1f8edaaded1cc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Cinematica.unity
     guid: 776e1d2ec7c6d6e4aaeba8381ebbfc0c
   - enabled: 1
@@ -41,6 +41,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Perfil.unity
     guid: ce26ab7b21484304182c06882950950c
+  - enabled: 1
+    path: Assets/Scenes/Creditos.unity
+    guid: ce76fee9d02b0944e8f3b211ac03b72c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

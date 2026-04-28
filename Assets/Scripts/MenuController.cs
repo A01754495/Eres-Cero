@@ -14,6 +14,7 @@ public class MenuController : MonoBehaviour
     private Button btnJugar;
     private Button btnRankings;
     private Button btnAspectos;
+    private Button btnCreditos;
     private VisualElement iconoTrofeo;
     private VisualElement iconoUsuario;
 
@@ -25,6 +26,7 @@ public class MenuController : MonoBehaviour
         btnJugar    = root.Q<Button>("BtnJugar");
         btnRankings = root.Q<Button>("BtnRankings");
         btnAspectos = root.Q<Button>("BtnAspectos");
+        btnCreditos = root.Q<Button>("BtnCreditos");
         iconoTrofeo  = root.Q<VisualElement>("IconoTrofeo");
         iconoUsuario = root.Q<VisualElement>("IconoUsuario");
 
@@ -47,6 +49,13 @@ public class MenuController : MonoBehaviour
             {
                 UISoundManager.Instance.PlayClick();
                 IrAAspectos(e);
+            });
+
+        if (btnCreditos != null)
+            btnCreditos.RegisterCallback<ClickEvent>(e =>
+            {
+                UISoundManager.Instance.PlayClick();
+                SceneManager.LoadScene("Creditos");
             });
 
         if (iconoTrofeo != null)
@@ -77,7 +86,6 @@ public class MenuController : MonoBehaviour
     {
         var gm = GameManager.Instance;
 
-        // Verificar si ya está desbloqueado en BD
         using var check = UnityWebRequest.Get($"{URL_BASE}/logros-jugador/{gm.IdJugador}");
         yield return check.SendWebRequest();
 
@@ -85,10 +93,9 @@ public class MenuController : MonoBehaviour
         {
             var lista = JsonHelper.ParseList<LogroEntry>(check.downloadHandler.text);
             foreach (var l in lista)
-                if (l.idLogro == 5) yield break; // ya desbloqueado
+                if (l.idLogro == 5) yield break;
         }
 
-        // Consultar ranking historico
         using var req = UnityWebRequest.Get($"{URL_BASE}/ranking-historico");
         yield return req.SendWebRequest();
 
@@ -97,7 +104,6 @@ public class MenuController : MonoBehaviour
         var ranking = JsonHelper.ParseList<RankingEntry>(req.downloadHandler.text);
         if (ranking == null || ranking.Count == 0) yield break;
 
-        // El top 1 es el primer elemento — comparar alias
         if (ranking[0].alias == gm.AliasJugador)
             yield return StartCoroutine(DesbloquearLogro(5));
     }
@@ -127,7 +133,7 @@ public class MenuController : MonoBehaviour
         {
             GameManager.Instance.EsTutorial = true;
             GameManager.Instance.IniciarPartida("facil");
-            SceneManager.LoadScene("Gameplay"); // <- directo a Gameplay, el TutorialController maneja el video
+            SceneManager.LoadScene("Gameplay");
         }
         else
         {
