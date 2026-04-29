@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
 
     public int ValorInicioOla { get; set; } = 0;
 
+    public bool TocoPrimeraCasilla { get; set; } = false;
+
     public void MarcarPartidaJugada()
     {
         PlayerPrefs.SetInt("HaJugado", 1);

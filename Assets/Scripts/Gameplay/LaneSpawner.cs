@@ -206,6 +206,7 @@ public class LaneSpawner : MonoBehaviour
 
     public void ForzarNuevaOla()
     {
+        GameManager.Instance.TocoPrimeraCasilla = false;
         SpawnOla();
     }
 

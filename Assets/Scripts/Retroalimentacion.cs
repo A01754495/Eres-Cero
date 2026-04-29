@@ -58,14 +58,17 @@ public class RetroalimentacionController : MonoBehaviour
         if (base_ == 0)
             return $"Necesitabas llegar a {meta}.";
 
+        if (meta == 0)
+            return $"Pista: {base_} - {base_} = 0.";
+
         int diff = meta - base_;
 
         // ¿Se puede multiplicar exactamente?
-        if (base_ != 0 && meta % base_ == 0 && meta / base_ > 1)
+        if (meta % base_ == 0 && meta / base_ > 1)
             return $"Pista: {base_} x {meta / base_} = {meta}.";
 
         // ¿Se puede dividir exactamente?
-        if (base_ != 0 && base_ % meta == 0 && base_ / meta > 1)
+        if (meta != 0 && base_ % meta == 0 && base_ / meta > 1)
             return $"Pista: {base_} ÷ {base_ / meta} = {meta}.";
 
         // Suma o resta

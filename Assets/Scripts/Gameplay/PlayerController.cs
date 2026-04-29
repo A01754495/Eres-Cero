@@ -166,8 +166,12 @@ public class PlayerController : MonoBehaviour
             CasillaOperacion casilla = other.GetComponent<CasillaOperacion>();
             if (casilla == null) return;
 
-            // Guardar datos para retroalimentación
-            GameManager.Instance.UltimoValorBase = GameManager.Instance.ValorJugador;
+            if (!GameManager.Instance.TocoPrimeraCasilla)
+            {
+                GameManager.Instance.UltimoValorBase     = GameManager.Instance.ValorJugador;
+                GameManager.Instance.TocoPrimeraCasilla  = true;
+            }
+
             GameManager.Instance.UltimoOperador  = casilla.operador;
             GameManager.Instance.UltimoNumero    = casilla.numero;
             GameManager.Instance.UltimoResultado = casilla.resultadoFinal;
