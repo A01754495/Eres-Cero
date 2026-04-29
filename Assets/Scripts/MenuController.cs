@@ -4,8 +4,6 @@ using UnityEngine.UIElements;
 using UnityEngine.Networking;
 using System.Collections;
 
-// Verifica Logro 5 — Dominio absoluto: top 1 en ranking historico
-
 public class MenuController : MonoBehaviour
 {
     private const string URL_BASE = "https://ygtfxb3dtnzrhhgw4sixxcynsq0qnzpw.lambda-url.us-east-1.on.aws";
@@ -72,16 +70,33 @@ public class MenuController : MonoBehaviour
                 IrALogin(e);
             });
 
-        // Verificar Dominio absoluto si hay sesión
         if (GameManager.Instance != null && GameManager.Instance.HaySesion)
+        {
+            // Deshabilitar Jugar hasta que sepa si es primera partida
+            if (btnJugar != null) btnJugar.SetEnabled(false);
+            StartCoroutine(VerificarPrimeraPartidaAlIniciar());
             StartCoroutine(VerificarDominioAbsoluto());
+        }
     }
 
     void OnDisable() { }
 
-    // ================================================================
-    // Logro 5 — Dominio absoluto: top 1 en ranking historico
-    // ================================================================
+    IEnumerator VerificarPrimeraPartidaAlIniciar()
+    {
+        int idJugador = GameManager.Instance.IdJugador;
+        using var req = UnityWebRequest.Get($"{URL_BASE}/puntaje-total/{idJugador}");
+        yield return req.SendWebRequest();
+
+        if (req.result == UnityWebRequest.Result.Success)
+        {
+            var resp = JsonUtility.FromJson<RespuestaPuntaje>(req.downloadHandler.text);
+            GameManager.Instance.EsPrimeraPartida = (resp != null && resp.puntajeTotal == 0);
+        }
+
+        // Habilitar Jugar una vez que ya sabe si es primera partida
+        if (btnJugar != null) btnJugar.SetEnabled(true);
+    }
+
     IEnumerator VerificarDominioAbsoluto()
     {
         var gm = GameManager.Instance;
@@ -147,6 +162,7 @@ public class MenuController : MonoBehaviour
     void IrALogros(ClickEvent evt)   => SceneManager.LoadScene("Logros");
     void IrALogin(ClickEvent evt)    => SceneManager.LoadScene("Perfil");
 
-    [System.Serializable] private class LogroEntry  { public int idLogro; }
-    [System.Serializable] private class RankingEntry { public int posicion; public string alias; public int puntaje; }
+    [System.Serializable] private class LogroEntry       { public int idLogro; }
+    [System.Serializable] private class RankingEntry     { public int posicion; public string alias; public int puntaje; }
+    [System.Serializable] private class RespuestaPuntaje { public int puntajeTotal; }
 }
