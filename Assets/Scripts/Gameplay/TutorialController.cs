@@ -9,12 +9,12 @@ public class TutorialController : MonoBehaviour
 
     private string[] mensajes = new string[]
     {
-        "¡Bienvenido a ¡ERES CERO!\n\nTu personaje tiene un valor numérico.\nTu objetivo: igualarlo al número de la puerta.",
-        "Usa ← → (o A / D) para moverte\nentre los 3 carriles.",
-        "Las casillas modifican tu valor.\nElige la operación correcta\npara llegar al número de la puerta.",
-        "Si llegas a la puerta con el\nnúmero correcto... ¡pasas!\nSi no, ¡Game Over!",
-        "La velocidad aumenta con cada puerta.\n¡Entre más puertas cruces,\nmás puntos ganas!\n\n¿Ya sabes qué casilla elegir?\n¡Presiona ESPACIO para adelantar\ntodo y llegar más rápido a la puerta!",
-        "¡Buena suerte!"
+        "¡Bienvenido a ¡ERES CERO+!\n\nTu personaje tiene un valor numerico.\nTu objetivo: igualarlo al número de la puerta.\n",
+        "Usa ← → (o A / D) para moverte\nentre los 3 carriles.\n",
+        "Las casillas modifican tu valor.\nElige la operación correcta\npara llegar al número de la puerta.\n",
+        "Si llegas a la puerta con el\nnúmero correcto... ¡pasas!\nSi no, ¡Game Over!\n",
+        "La velocidad aumenta con cada puerta.\n¡Entre mas puertas cruces,\nmas puntos ganas!\n\n¿Ya sabes qué casilla elegir?\n¡Presiona ESPACIO para adelantar\ntodo y llegar mas rapido a la puerta!\n",
+        "¡Buena suerte!\n"
     };
 
     private int mensajeActual = 0;

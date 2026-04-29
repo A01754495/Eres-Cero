@@ -31,29 +31,32 @@ public class RetroalimentacionController : MonoBehaviour
     {
         if (GameManager.Instance == null || labelRetroalimentacion == null) return;
 
-        var    gm    = GameManager.Instance;
-        string op    = gm.UltimoOperador;
-        int    num   = gm.UltimoNumero;
-        int    res   = gm.UltimoResultado;
-        int    meta  = gm.MetaFallida;
-        int    base_ = gm.UltimoValorBase;
+        var gm   = GameManager.Instance;
+        int res  = gm.ValorJugador;
+        int meta = gm.MetaFallida;
+        int base_ = gm.ValorInicioOla; // valor al inicio de la ola
 
-        // Línea 1: la operación que hizo el jugador
+        string op  = gm.UltimoOperador;
+        int    num = gm.UltimoNumero;
+
+        // Línea 1: lo que hizo en la última casilla
         string linea1 = !string.IsNullOrEmpty(op) && num != 0
-            ? $"{base_} {op} {num} = {res}"
+            ? $"{gm.UltimoValorBase} {op} {num} = {res}"
             : $"Tu número era {res}";
 
-        // Línea 2: consejo simple y siempre correcto
-        string linea2 = $"La puerta pedía {meta}.\n" + SugerirOperacion(base_, meta);
+        // Línea 2: pista desde el inicio de la ola
+        string linea2;
+
+        linea2 = $"La puerta pedía {meta}.\n" + SugerirOperacion(base_, meta);
 
         labelRetroalimentacion.text = $"{linea1}\n{linea2}";
+        Debug.Log($"ValorInicioOla:{gm.ValorInicioOla} UltimoValorBase:{gm.UltimoValorBase} op:{op} num:{num} res:{res} meta:{meta}");
     }
-
     // Sugiere la operación más simple para llegar de base a meta
     string SugerirOperacion(int base_, int meta)
     {
         if (base_ == 0)
-            return $"Necesitabas sumar {meta} para llegar a {meta}.";
+            return $"Necesitabas llegar a {meta}.";
 
         int diff = meta - base_;
 

@@ -47,14 +47,17 @@
 }
 
 .titulo-logro {
-    font-size: 28px;
+    font-size: 30px;
     color: white;
     -unity-font-style: bold;
+    -unity-font-definition: url("project://database/Assets/TextMesh%20Pro/Fonts/Stencil8bit-Regular.otf?fileID=12800000&guid=7c460547aa4a9744e8be331be26cb17a&type=3#Stencil8bit-Regular");
 }
 
 .desc-logro {
-    font-size: 18px;
+    font-size: 20px;
     color: white;
+    -unity-font-definition: url("project://database/Assets/TextMesh%20Pro/Fonts/Stencil8bit-Regular.otf?fileID=12800000&guid=7c460547aa4a9744e8be331be26cb17a&type=3#Stencil8bit-Regular");
+    -unity-font-style: normal;
 }
 
 .boton-volver {

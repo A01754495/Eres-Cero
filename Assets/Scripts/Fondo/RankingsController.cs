@@ -186,11 +186,15 @@ public class RankingsController : MonoBehaviour
             return;
         }
 
-        foreach (var entrada in entradas)
+        // Máximo 10 entradas
+        int total = Mathf.Min(entradas.Count, 10);
+
+        for (int idx = 0; idx < total; idx++)
         {
+            var entrada = entradas[idx];
+
             var fila = new VisualElement();
             fila.style.flexDirection     = FlexDirection.Row;
-            fila.style.justifyContent    = Justify.SpaceBetween;
             fila.style.paddingTop        = 8;
             fila.style.paddingBottom     = 8;
             fila.style.paddingLeft       = 10;
@@ -207,12 +211,15 @@ public class RankingsController : MonoBehaviour
                 l.style.color                   = new StyleColor(Color.white);
                 l.style.fontSize                = 22;
                 l.style.unityFontStyleAndWeight = FontStyle.Bold;
+                l.style.overflow                = Overflow.Hidden;
             }
 
-            lPos.style.minWidth         = 40;
-            lPts.style.unityTextAlign   = TextAnchor.MiddleRight;
-            lAlias.style.flexGrow       = 1;
-            lAlias.style.unityTextAlign = TextAnchor.MiddleCenter;
+            // Anchos fijos para que no se chuequen
+            lPos.style.width          = new StyleLength(new Length(10, LengthUnit.Percent));
+            lAlias.style.width        = new StyleLength(new Length(55, LengthUnit.Percent));
+            lAlias.style.unityTextAlign = TextAnchor.MiddleLeft;
+            lPts.style.width          = new StyleLength(new Length(35, LengthUnit.Percent));
+            lPts.style.unityTextAlign = TextAnchor.MiddleRight;
 
             fila.Add(lPos);
             fila.Add(lAlias);

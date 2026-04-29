@@ -92,6 +92,7 @@ public class LaneSpawner : MonoBehaviour
         int valorBase = GameManager.Instance != null ? GameManager.Instance.ValorJugador : 0;
         if (GameManager.Instance != null)
             GameManager.Instance.ValorBase = valorBase;
+            GameManager.Instance.ValorInicioOla = valorBase;
 
         // Generar meta diferente al valorBase
         int meta;

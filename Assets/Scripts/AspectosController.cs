@@ -154,7 +154,32 @@ public class AspectosController : MonoBehaviour
             GameManager.Instance.SkinSeleccionada = 0;
             skinSelector?.CambiarSkin(0);
         }
+        // Actualizar label de puntos para desbloquear siguiente aspecto
+        var labelPuntos = ui.rootVisualElement.Q<Label>("PuntosDesbloqueo");
+        if (labelPuntos != null)
+        {
+            // Buscar la siguiente skin bloqueada
+            int siguienteRequerido = -1;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!aspectosDesbloqueados.Contains(i + 1))
+                {
+                    siguienteRequerido = puntajesDesbloqueo[i];
+                    break;
+                }
+            }
 
+            if (siguienteRequerido == -1)
+            {
+                // Tiene todas las skins
+                labelPuntos.style.display = DisplayStyle.None;
+            }
+            else
+            {
+                labelPuntos.style.display = DisplayStyle.Flex;
+                labelPuntos.text = $"Puntos para desbloquear el siguiente aspecto: {siguienteRequerido}";
+            }
+        }
         ActualizarPreview(skinSeleccionadaActual);
     }
 
