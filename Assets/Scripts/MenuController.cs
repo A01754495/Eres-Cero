@@ -1,12 +1,18 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+<<<<<<< HEAD
 using UnityEngine.Networking;
 using System.Collections;
+=======
+>>>>>>> 693feae (Final)
 
 public class MenuController : MonoBehaviour
 {
-    private const string URL_BASE = "https://ygtfxb3dtnzrhhgw4sixxcynsq0qnzpw.lambda-url.us-east-1.on.aws";
+    private const string URL_BASE =
+        "https://ygtfxb3dtnzrhhgw4sixxcynsq0qnzpw.lambda-url.us-east-1.on.aws";
 
     private UIDocument menu;
     private Button btnJugar;
@@ -21,11 +27,11 @@ public class MenuController : MonoBehaviour
         menu = GetComponent<UIDocument>();
         var root = menu.rootVisualElement;
 
-        btnJugar    = root.Q<Button>("BtnJugar");
+        btnJugar = root.Q<Button>("BtnJugar");
         btnRankings = root.Q<Button>("BtnRankings");
         btnAspectos = root.Q<Button>("BtnAspectos");
         btnCreditos = root.Q<Button>("BtnCreditos");
-        iconoTrofeo  = root.Q<VisualElement>("IconoTrofeo");
+        iconoTrofeo = root.Q<VisualElement>("IconoTrofeo");
         iconoUsuario = root.Q<VisualElement>("IconoUsuario");
 
         if (btnJugar != null)
@@ -73,7 +79,12 @@ public class MenuController : MonoBehaviour
         if (GameManager.Instance != null && GameManager.Instance.HaySesion)
         {
             // Deshabilitar Jugar hasta que sepa si es primera partida
+<<<<<<< HEAD
             if (btnJugar != null) btnJugar.SetEnabled(false);
+=======
+            if (btnJugar != null)
+                btnJugar.SetEnabled(false);
+>>>>>>> 693feae (Final)
             StartCoroutine(VerificarPrimeraPartidaAlIniciar());
             StartCoroutine(VerificarDominioAbsoluto());
         }
@@ -94,7 +105,12 @@ public class MenuController : MonoBehaviour
         }
 
         // Habilitar Jugar una vez que ya sabe si es primera partida
+<<<<<<< HEAD
         if (btnJugar != null) btnJugar.SetEnabled(true);
+=======
+        if (btnJugar != null)
+            btnJugar.SetEnabled(true);
+>>>>>>> 693feae (Final)
     }
 
     IEnumerator VerificarDominioAbsoluto()
@@ -108,16 +124,19 @@ public class MenuController : MonoBehaviour
         {
             var lista = JsonHelper.ParseList<LogroEntry>(check.downloadHandler.text);
             foreach (var l in lista)
-                if (l.idLogro == 5) yield break;
+                if (l.idLogro == 5)
+                    yield break;
         }
 
         using var req = UnityWebRequest.Get($"{URL_BASE}/ranking-historico");
         yield return req.SendWebRequest();
 
-        if (req.result != UnityWebRequest.Result.Success) yield break;
+        if (req.result != UnityWebRequest.Result.Success)
+            yield break;
 
         var ranking = JsonHelper.ParseList<RankingEntry>(req.downloadHandler.text);
-        if (ranking == null || ranking.Count == 0) yield break;
+        if (ranking == null || ranking.Count == 0)
+            yield break;
 
         if (ranking[0].alias == gm.AliasJugador)
             yield return StartCoroutine(DesbloquearLogro(5));
@@ -126,18 +145,21 @@ public class MenuController : MonoBehaviour
     IEnumerator DesbloquearLogro(int idLogro)
     {
         string fecha = System.DateTime.Now.ToString("yyyy-MM-dd");
-        string body  = $"{{\"idJugador\":{GameManager.Instance.IdJugador}," +
-                       $"\"idLogro\":{idLogro}," +
-                       $"\"fechaDesbloqueo\":\"{fecha}\"}}";
+        string body =
+            $"{{\"idJugador\":{GameManager.Instance.IdJugador},"
+            + $"\"idLogro\":{idLogro},"
+            + $"\"fechaDesbloqueo\":\"{fecha}\"}}";
 
         using var req = new UnityWebRequest($"{URL_BASE}/logro", "POST");
-        req.uploadHandler   = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(body));
+        req.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(body));
         req.downloadHandler = new DownloadHandlerBuffer();
         req.SetRequestHeader("Content-Type", "application/json");
         yield return req.SendWebRequest();
 
         if (req.result != UnityWebRequest.Result.Success)
-            Debug.LogWarning($"No se pudo desbloquear logro {idLogro}: " + req.downloadHandler.text);
+            Debug.LogWarning(
+                $"No se pudo desbloquear logro {idLogro}: " + req.downloadHandler.text
+            );
         else
             Debug.Log($"Logro {idLogro} desbloqueado!");
     }
@@ -158,11 +180,37 @@ public class MenuController : MonoBehaviour
     }
 
     void IrARankings(ClickEvent evt) => SceneManager.LoadScene("Ranking");
-    void IrAAspectos(ClickEvent evt) => SceneManager.LoadScene("Aspectos");
-    void IrALogros(ClickEvent evt)   => SceneManager.LoadScene("Logros");
-    void IrALogin(ClickEvent evt)    => SceneManager.LoadScene("Perfil");
 
+<<<<<<< HEAD
     [System.Serializable] private class LogroEntry       { public int idLogro; }
     [System.Serializable] private class RankingEntry     { public int posicion; public string alias; public int puntaje; }
     [System.Serializable] private class RespuestaPuntaje { public int puntajeTotal; }
 }
+=======
+    void IrAAspectos(ClickEvent evt) => SceneManager.LoadScene("Aspectos");
+
+    void IrALogros(ClickEvent evt) => SceneManager.LoadScene("Logros");
+
+    void IrALogin(ClickEvent evt) => SceneManager.LoadScene("Perfil");
+
+    [System.Serializable]
+    private class LogroEntry
+    {
+        public int idLogro;
+    }
+
+    [System.Serializable]
+    private class RankingEntry
+    {
+        public int posicion;
+        public string alias;
+        public int puntaje;
+    }
+
+    [System.Serializable]
+    private class RespuestaPuntaje
+    {
+        public int puntajeTotal;
+    }
+}
+>>>>>>> 693feae (Final)
