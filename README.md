@@ -2,7 +2,7 @@ Copyright © 2026 Fundación NIDE A.C.
 
 Eres-Cero is free software: you can redistribute it and/or modify
 it under the terms of the Affero GNU General Public License as published by
-Fundación NIDE A.C. and CeroTeam, either version 3 of the License, or
+the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
 Eres-Cero is distributed in the hope that it will be useful and/or fun,
@@ -14,6 +14,7 @@ You should have received a copy of the Affero GNU General Public License
 along with Eres-Cero.  If not, see <https://www.gnu.org/licenses/>.
 
 # AUTHORS
+CeroDevTeam:
 - Luis Alejandro Olvera Hernández
 - Valeria Gisselle Portilla Robles
 
